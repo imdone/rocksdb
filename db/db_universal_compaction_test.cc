@@ -228,7 +228,7 @@ TEST_P(DBTestUniversalCompaction, OptimizeFiltersForHits) {
   ASSERT_EQ(prev_counter, TestGetTickerCount(options, BLOOM_FILTER_USEFUL));
 }
 
-// TODO(kailiu) The tests on UniversalCompaction has some issues:
+// TODO (kailiu) The tests on UniversalCompaction has some issues: id:60
 //  1. A lot of magic numbers ("11" or "12").
 //  2. Made assumption on the memtable flush conditions, which may change from
 //     time to time.

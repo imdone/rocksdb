@@ -685,7 +685,7 @@ public class RocksDB extends RocksObject {
         columnFamilyHandle.nativeHandle_);
   }
 
-  // TODO(AR) we should improve the #get() API, returning -1 (RocksDB.NOT_FOUND) is not very nice
+  // TODO (AR) we should improve the #get() API, returning -1 (RocksDB.NOT_FOUND) is not very nice id:243
   // when we could communicate better status into, also the C++ code show that -2 could be returned
 
   /**

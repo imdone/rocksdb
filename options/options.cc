@@ -323,7 +323,7 @@ void ColumnFamilyOptions::Dump(Logger* log) const {
         log,
         "                Options.inplace_update_num_locks: %" ROCKSDB_PRIszt,
         inplace_update_num_locks);
-    // TODO: easier config for bloom (maybe based on avg key/value size)
+    // TODO: easier config for bloom (maybe based on avg key/value size) id:250
     ROCKS_LOG_HEADER(
         log, "              Options.memtable_prefix_bloom_size_ratio: %f",
         memtable_prefix_bloom_size_ratio);

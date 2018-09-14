@@ -182,7 +182,7 @@ TEST_F(AutoVectorTest, Iterators) {
   while (pos != vec.end()) {
     auto old_val = *pos;
     auto old = pos++;
-    // HACK: make sure -> works
+    // HACK: make sure -> works id:307
     ASSERT_TRUE(!old->empty());
     ASSERT_EQ(old_val, *old);
     ASSERT_TRUE(pos == vec.end() || old_val != *pos);
@@ -256,7 +256,7 @@ size_t BenchmarkSequenceAccess(std::string name, size_t ops, size_t elem_size) {
   cout << "performed " << ops << " sequence access against " << name << "\n\t"
        << "size: " << elem_size << "\n\t"
        << "total time elapsed: " << elapsed << " (ns)" << endl;
-  // HACK avoid compiler's optimization to ignore total
+  // HACK avoid compiler's optimization to ignore total id:280
   return total;
 }
 

@@ -177,7 +177,7 @@ public class Transaction extends RocksObject {
    * Prepare the current transaction for 2PC
    */
   void prepare() throws RocksDBException {
-    //TODO(AR) consider a Java'ish version of this function, which returns an AutoCloseable (commit)
+    //TODO (AR) consider a Java'ish version of this function, which returns an AutoCloseable (commit) id:196
     assert(isOwningHandle());
     prepare(nativeHandle_);
   }
@@ -670,7 +670,7 @@ public class Transaction extends RocksObject {
     put(nativeHandle_, key, key.length, value, value.length);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:219
   /**
    * Similar to {@link #put(ColumnFamilyHandle, byte[], byte[])} but allows
    * you to specify the key and value in several parts that will be
@@ -691,7 +691,7 @@ public class Transaction extends RocksObject {
         columnFamilyHandle.nativeHandle_);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:228
   /**
    * Similar to {@link #put(byte[], byte[])} but allows
    * you to specify the key and value in several parts that will be
@@ -822,7 +822,7 @@ public class Transaction extends RocksObject {
     delete(nativeHandle_, key, key.length);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:170
   /**
    * Similar to {@link #delete(ColumnFamilyHandle, byte[])} but allows
    * you to specify the key in several parts that will be
@@ -841,7 +841,7 @@ public class Transaction extends RocksObject {
         columnFamilyHandle.nativeHandle_);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:244
   /**
    * Similar to {@link #delete(byte[])} but allows
    * you to specify key the in several parts that will be
@@ -914,7 +914,7 @@ public class Transaction extends RocksObject {
     singleDelete(nativeHandle_, key, key.length);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:197
   /**
    * Similar to {@link #singleDelete(ColumnFamilyHandle, byte[])} but allows
    * you to specify the key in several parts that will be
@@ -934,7 +934,7 @@ public class Transaction extends RocksObject {
         columnFamilyHandle.nativeHandle_);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:220
   /**
    * Similar to {@link #singleDelete(byte[])} but allows
    * you to specify the key in several parts that will be
@@ -1003,7 +1003,7 @@ public class Transaction extends RocksObject {
     putUntracked(nativeHandle_, key, key.length, value, value.length);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:229
   /**
    * Similar to {@link #putUntracked(ColumnFamilyHandle, byte[], byte[])} but
    * allows you to specify the key and value in several parts that will be
@@ -1024,7 +1024,7 @@ public class Transaction extends RocksObject {
         valueParts.length, columnFamilyHandle.nativeHandle_);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:171
   /**
    * Similar to {@link #putUntracked(byte[], byte[])} but
    * allows you to specify the key and value in several parts that will be
@@ -1143,7 +1143,7 @@ public class Transaction extends RocksObject {
     deleteUntracked(nativeHandle_, key, key.length);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:245
   /**
    * Similar to {@link #deleteUntracked(ColumnFamilyHandle, byte[])} but allows
    * you to specify the key in several parts that will be
@@ -1162,7 +1162,7 @@ public class Transaction extends RocksObject {
         columnFamilyHandle.nativeHandle_);
   }
 
-  //TODO(AR) refactor if we implement org.rocksdb.SliceParts in future
+  //TODO (AR) refactor if we implement org.rocksdb.SliceParts in future id:198
   /**
    * Similar to {@link #deleteUntracked(byte[])} but allows
    * you to specify the key in several parts that will be
@@ -1501,7 +1501,7 @@ public class Transaction extends RocksObject {
   /**
    * Get the execution status of the transaction.
    *
-   * NOTE: The execution status of an Optimistic Transaction
+   * NOTE: The execution status of an Optimistic Transaction id:221
    * never changes. This is only useful for non-optimistic transactions!
    *
    * @return The execution status of the transaction

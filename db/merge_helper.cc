@@ -187,7 +187,7 @@ Status MergeHelper::MergeUntil(InternalIterator* iter,
         return Status::OK();
       }
 
-      // TODO(noetzli) If the merge operator returns false, we are currently
+      // TODO (noetzli) If the merge operator returns false, we are currently id:21
       // (almost) silently dropping the put/delete. That's probably not what we
       // want. Also if we're in compaction and it's a put, it would be nice to
       // run compaction filter on it.
@@ -279,7 +279,7 @@ Status MergeHelper::MergeUntil(InternalIterator* iter,
 
   // We are sure we have seen this key's entire history if we are at the
   // last level and exhausted all internal keys of this user key.
-  // NOTE: !iter->Valid() does not necessarily mean we hit the
+  // NOTE: !iter->Valid() does not necessarily mean we hit the id:87
   // beginning of a user key, as versions of a user key might be
   // split into multiple files (even files on the same level)
   // and some files might not be included in the compaction/merge.

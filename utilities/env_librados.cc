@@ -53,7 +53,7 @@ Status err_to_status(int r)
   case -EIO:
     return Status::IOError(Status::kNone);
   default:
-    // FIXME :(
+    // FIXME :( id:371
     assert(0 == "unrecognized error code");
     return Status::NotSupported(Status::kNone);
   }
@@ -556,7 +556,7 @@ public:
     _lock_name("lock_name"),
     _cookie("cookie") {
 
-    // TODO: the lock will never expire. It may cause problem if the process crash or abnormally exit.
+    // TODO: the lock will never expire. It may cause problem if the process crash or abnormally exit. id:316
     while (!_io_ctx->lock_exclusive(
              _obj_name,
              _lock_name,

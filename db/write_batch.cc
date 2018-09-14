@@ -1432,7 +1432,7 @@ class MemTableInserter : public WriteBatch::Handler {
         // need to keep track of the keys for upcoming rollback/commit.
         WriteBatchInternal::DeleteRange(rebuilding_trx_, column_family_id,
                                         begin_key, end_key);
-        // TODO(myabandeh): when transactional DeleteRange support is added,
+        // TODO (myabandeh): when transactional DeleteRange support is added, id:125
         // check if end_key must also be added.
         batch_boundry = IsDuplicateKeySeq(column_family_id, begin_key);
       }

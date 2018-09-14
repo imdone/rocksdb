@@ -88,7 +88,7 @@ class RandomAccessFileMirror : public RandomAccessFile {
   }
 
   size_t GetUniqueId(char* id, size_t max_size) const override {
-    // NOTE: not verified
+    // NOTE: not verified id:404
     return a_->GetUniqueId(id, max_size);
   }
 };
@@ -151,7 +151,7 @@ class WritableFileMirror : public WritableFile {
     b_->SetIOPriority(pri);
   }
   Env::IOPriority GetIOPriority() override {
-    // NOTE: we don't verify this one
+    // NOTE: we don't verify this one id:342
     return a_->GetIOPriority();
   }
   uint64_t GetFileSize() override {
@@ -161,11 +161,11 @@ class WritableFileMirror : public WritableFile {
   }
   void GetPreallocationStatus(size_t* block_size,
                               size_t* last_allocated_block) override {
-    // NOTE: we don't verify this one
+    // NOTE: we don't verify this one id:395
     return a_->GetPreallocationStatus(block_size, last_allocated_block);
   }
   size_t GetUniqueId(char* id, size_t max_size) const override {
-    // NOTE: we don't verify this one
+    // NOTE: we don't verify this one id:372
     return a_->GetUniqueId(id, max_size);
   }
   Status InvalidateCache(size_t offset, size_t length) override {

@@ -51,7 +51,7 @@ class BlobFile;
 // blob record is present in the blob log. If fsync/fdatasync in not
 // happening on every write, there is the probability that keys in the
 // blob log can lag the keys in blobs
-// TODO(yiwu): implement the WAL filter.
+// TODO (yiwu): implement the WAL filter. id:390
 class BlobReconcileWalFilter : public WalFilter {
  public:
   virtual WalFilter::WalProcessingOption LogRecordFound(

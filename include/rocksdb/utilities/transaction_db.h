@@ -25,9 +25,9 @@ class TransactionDBMutexFactory;
 
 enum TxnDBWritePolicy {
   WRITE_COMMITTED = 0,  // write only the committed data
-  // TODO(myabandeh): Not implemented yet
+  // TODO (myabandeh): Not implemented yet id:139
   WRITE_PREPARED,  // write data after the prepare phase of 2pc
-  // TODO(myabandeh): Not implemented yet
+  // TODO (myabandeh): Not implemented yet id:98
   WRITE_UNPREPARED  // write data before the prepare phase of 2pc
 };
 
@@ -86,7 +86,7 @@ struct TransactionDBOptions {
   // tell apart committed from uncommitted data.
   TxnDBWritePolicy write_policy = TxnDBWritePolicy::WRITE_COMMITTED;
 
-  // TODO(myabandeh): remove this option
+  // TODO (myabandeh): remove this option id:156
   // Note: this is a temporary option as a hot fix in rollback of writeprepared
   // txns in myrocks. MyRocks uses merge operands for autoinc column id without
   // however obtaining locks. This breaks the assumption behind the rollback
@@ -112,7 +112,7 @@ struct TransactionOptions {
   // SwitchMemtable or recovery.
   bool use_only_the_last_commit_time_batch_for_recovery = false;
 
-  // TODO(agiardullo): TransactionDB does not yet support comparators that allow
+  // TODO (agiardullo): TransactionDB does not yet support comparators that allow id:185
   // two non-equal keys to be equivalent.  Ie, cmp->Compare(a,b) should only
   // return 0 if
   // a.compare(b) returns 0.

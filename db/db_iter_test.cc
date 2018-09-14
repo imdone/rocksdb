@@ -2220,7 +2220,7 @@ TEST_F(DBIteratorTest, DBIterator8) {
   ASSERT_EQ(db_iter->value().ToString(), "0");
 }
 
-// TODO(3.13): fix the issue of Seek() then Prev() which might not necessary
+// TODO (3.13): fix the issue of Seek() then Prev() which might not necessary id:115
 //             return the biggest element smaller than the seek key.
 TEST_F(DBIteratorTest, DBIterator9) {
   ReadOptions ro;
@@ -2290,7 +2290,7 @@ TEST_F(DBIteratorTest, DBIterator9) {
   }
 }
 
-// TODO(3.13): fix the issue of Seek() then Prev() which might not necessary
+// TODO (3.13): fix the issue of Seek() then Prev() which might not necessary id:57
 //             return the biggest element smaller than the seek key.
 TEST_F(DBIteratorTest, DBIterator10) {
   ReadOptions ro;

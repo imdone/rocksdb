@@ -845,7 +845,7 @@ bool InternalStats::HandleIsWriteStopped(uint64_t* value, DBImpl* db,
 
 bool InternalStats::HandleEstimateOldestKeyTime(uint64_t* value, DBImpl* /*db*/,
                                                 Version* /*version*/) {
-  // TODO(yiwu): The property is currently available for fifo compaction
+  // TODO (yiwu): The property is currently available for fifo compaction id:86
   // with allow_compaction = false. This is because we don't propagate
   // oldest_key_time on compaction.
   if (cfd_->ioptions()->compaction_style != kCompactionStyleFIFO ||

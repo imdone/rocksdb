@@ -416,7 +416,7 @@ jobject Java_org_rocksdb_WriteBatchWithIndex_getWriteBatch(JNIEnv* env,
 
   auto* wb = wbwi->GetWriteBatch();
 
-  // TODO(AR) is the `wb` object owned by us?
+  // TODO (AR) is the `wb` object owned by us? id:238
   return rocksdb::WriteBatchJni::construct(env, wb);
 }
 
@@ -704,7 +704,7 @@ jlongArray Java_org_rocksdb_WBWIRocksIterator_entry1(JNIEnv* env,
   // set the type of the write entry
   results[0] = rocksdb::WriteTypeJni::toJavaWriteType(we.type);
 
-  // NOTE: key_slice and value_slice will be freed by
+  // NOTE: key_slice and value_slice will be freed by id:191
   // org.rocksdb.DirectSlice#close
 
   auto* key_slice = new rocksdb::Slice(we.key.data(), we.key.size());

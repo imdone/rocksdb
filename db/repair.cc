@@ -564,7 +564,7 @@ class Repairer {
       edit.SetNextFile(next_file_number_);
       edit.SetColumnFamily(cfd->GetID());
 
-      // TODO(opt): separate out into multiple levels
+      // TODO (opt): separate out into multiple levels id:22
       for (const auto* table : cf_id_and_tables.second) {
         edit.AddFile(0, table->meta.fd.GetNumber(), table->meta.fd.GetPathId(),
                      table->meta.fd.GetFileSize(), table->meta.smallest,

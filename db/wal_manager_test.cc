@@ -26,8 +26,8 @@
 
 namespace rocksdb {
 
-// TODO(icanadi) mock out VersionSet
-// TODO(icanadi) move other WalManager-specific tests from db_test here
+// TODO (icanadi) mock out VersionSet id:124
+// TODO (icanadi) move other WalManager-specific tests from db_test here id:66
 class WalManagerTest : public testing::Test {
  public:
   WalManagerTest()
@@ -138,7 +138,7 @@ TEST_F(WalManagerTest, ReadFirstRecordCache) {
   WriteBatchInternal::SetSequence(&batch, 10);
   writer.AddRecord(WriteBatchInternal::Contents(&batch));
 
-  // TODO(icanadi) move SpecialEnv outside of db_test, so we can reuse it here.
+  // TODO (icanadi) move SpecialEnv outside of db_test, so we can reuse it here. id:132
   // Waiting for lei to finish with db_test
   // env_->count_sequential_reads_ = true;
   // sequential_read_counter_ sanity test
@@ -147,13 +147,13 @@ TEST_F(WalManagerTest, ReadFirstRecordCache) {
   ASSERT_OK(wal_manager_->TEST_ReadFirstRecord(kAliveLogFile, 1, &s));
   ASSERT_EQ(s, 10U);
   // did a read
-  // TODO(icanadi) move SpecialEnv outside of db_test, so we can reuse it here
+  // TODO (icanadi) move SpecialEnv outside of db_test, so we can reuse it here id:91
   // ASSERT_EQ(env_->sequential_read_counter_.Read(), 1);
 
   ASSERT_OK(wal_manager_->TEST_ReadFirstRecord(kAliveLogFile, 1, &s));
   ASSERT_EQ(s, 10U);
   // no new reads since the value is cached
-  // TODO(icanadi) move SpecialEnv outside of db_test, so we can reuse it here
+  // TODO (icanadi) move SpecialEnv outside of db_test, so we can reuse it here id:49
   // ASSERT_EQ(env_->sequential_read_counter_.Read(), 1);
 }
 

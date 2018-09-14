@@ -27,7 +27,7 @@ class DBRangeDelTest : public DBTestBase {
 // ROCKSDB_LITE
 #ifndef ROCKSDB_LITE
 TEST_F(DBRangeDelTest, NonBlockBasedTableNotSupported) {
-  // TODO: figure out why MmapReads trips the iterator pinning assertion in
+  // TODO: figure out why MmapReads trips the iterator pinning assertion in id:83
   // RangeDelAggregator. Ideally it would be supported; otherwise it should at
   // least be explicitly unsupported.
   for (auto config : {kPlainTableAllBytesPrefix, /* kWalDirAndMmapReads */}) {

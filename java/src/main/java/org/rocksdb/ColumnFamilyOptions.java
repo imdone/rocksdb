@@ -36,7 +36,7 @@ public class ColumnFamilyOptions extends RocksObject
   /**
    * Copy constructor for ColumnFamilyOptions.
    *
-   * NOTE: This does a shallow copy, which means comparator, merge_operator, compaction_filter,
+   * NOTE: This does a shallow copy, which means comparator, merge_operator, compaction_filter, id:167
    * compaction_filter_factory and other pointers will be cloned!
    *
    * @param other The ColumnFamilyOptions to copy.
@@ -201,7 +201,7 @@ public class ColumnFamilyOptions extends RocksObject
    * over {@link #setCompactionFilterFactory(AbstractCompactionFilterFactory)}
    * if the client specifies both.
    */
-  //TODO(AR) need to set a note on the concurrency of the compaction filter used from this method
+  //TODO (AR) need to set a note on the concurrency of the compaction filter used from this method id:241
   public ColumnFamilyOptions setCompactionFilter(
         final AbstractCompactionFilter<? extends AbstractSlice<?>>
             compactionFilter) {
@@ -956,7 +956,7 @@ public class ColumnFamilyOptions extends RocksObject
   private native boolean forceConsistencyChecks(final long handle);
 
   // instance variables
-  // NOTE: If you add new member variables, please update the copy constructor above!
+  // NOTE: If you add new member variables, please update the copy constructor above! id:194
   private MemTableConfig memTableConfig_;
   private TableFormatConfig tableFormatConfig_;
   private AbstractComparator<? extends AbstractSlice<?>> comparator_;

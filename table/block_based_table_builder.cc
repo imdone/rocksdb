@@ -892,7 +892,7 @@ Status BlockBasedTableBuilder::Finish() {
     // We're writing legacy magic number because we want old versions of RocksDB
     // be able to read files generated with new release (just in case if
     // somebody wants to roll back after an upgrade)
-    // TODO(icanadi) at some point in the future, when we're absolutely sure
+    // TODO (icanadi) at some point in the future, when we're absolutely sure id:288
     // nobody will roll back to RocksDB 2.x versions, retire the legacy magic
     // number and always write new table files with new magic number
     bool legacy = (r->table_options.format_version == 0);

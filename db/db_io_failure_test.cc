@@ -57,7 +57,7 @@ TEST_F(DBIOFailureTest, DropWrites) {
     ASSERT_LT(CountFiles(), num_files + 3);
 
     // Check that compaction attempts slept after errors
-    // TODO @krad: Figure out why ASSERT_EQ 5 keeps failing in certain compiler
+    // TODO @krad: Figure out why ASSERT_EQ 5 keeps failing in certain compiler id:38
     // versions
     ASSERT_GE(env_->sleep_counter_.Read(), 4);
   } while (ChangeCompactOptions());

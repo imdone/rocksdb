@@ -44,7 +44,7 @@ template <typename Func>
 void InitJSONDocument(std::unique_ptr<char[]>* data,
                       fbson::FbsonValue** value,
                       Func f) {
-  // TODO(stash): maybe add function to FbsonDocument to avoid creating array?
+  // TODO (stash): maybe add function to FbsonDocument to avoid creating array? id:370
   fbson::FbsonWriter writer;
   bool res __attribute__((__unused__)) = writer.writeStartArray();
   assert(res);
@@ -143,7 +143,7 @@ void CreateObject(std::unique_ptr<char[]>* data, fbson::FbsonValue** value) {
 namespace rocksdb {
 
 
-// TODO(stash): find smth easier
+// TODO (stash): find smth easier id:315
 JSONDocument::JSONDocument() {
   InitJSONDocument(&data_,
                    &value_,
@@ -209,7 +209,7 @@ JSONDocument::JSONDocument(fbson::FbsonValue* val, bool makeCopy) {
 }
 
 JSONDocument::JSONDocument(Type _type) {
-  // TODO(icanadi) make all of this better by using templates
+  // TODO (icanadi) make all of this better by using templates id:403
   switch (_type) {
     case kNull:
       InitJSONDocument(&data_, &value_,
@@ -313,7 +313,7 @@ JSONDocument JSONDocument::operator[](const std::string& key) const {
 size_t JSONDocument::Count() const {
   assert(IsObject() || IsArray());
   if (IsObject()) {
-    // TODO(stash): add to fbson?
+    // TODO (stash): add to fbson? id:341
     const fbson::ObjectVal& objectVal =
           *reinterpret_cast<fbson::ObjectVal*>(value_);
     return ObjectNumElem(objectVal);
@@ -487,7 +487,7 @@ JSONDocument::ItemsIteratorGenerator JSONDocument::Items() const {
   return ItemsIteratorGenerator(*(reinterpret_cast<fbson::ObjectVal*>(value_)));
 }
 
-// TODO(icanadi) (perf) allocate objects with arena
+// TODO (icanadi) (perf) allocate objects with arena id:394
 JSONDocument* JSONDocument::ParseJSON(const char* json) {
   fbson::FbsonJsonParser parser;
   if (!parser.parse(json)) {

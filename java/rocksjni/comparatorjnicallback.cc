@@ -67,7 +67,7 @@ int BaseComparatorJniCallback::Compare(const Slice& a, const Slice& b) const {
   JNIEnv* env = getJniEnv(&attached_thread);
   assert(env != nullptr);
 
-  // TODO(adamretter): slice objects can potentially be cached using thread
+  // TODO (adamretter): slice objects can potentially be cached using thread id:187
   // local variables to avoid locking. Could make this configurable depending on
   // performance.
   mtx_compare.get()->Lock();
@@ -139,7 +139,7 @@ void BaseComparatorJniCallback::FindShortestSeparator(
     return;
   }
 
-  // TODO(adamretter): slice object can potentially be cached using thread local
+  // TODO (adamretter): slice object can potentially be cached using thread local id:76
   // variable to avoid locking. Could make this configurable depending on
   // performance.
   mtx_findShortestSeparator.get()->Lock();

@@ -265,7 +265,7 @@ extern Status UncompressBlockContentsForCompressionType(
 
 // Implementation details follow.  Clients should ignore,
 
-// TODO(andrewkr): we should prefer one way of representing a null/uninitialized
+// TODO (andrewkr): we should prefer one way of representing a null/uninitialized id:292
 // BlockHandle. Currently we use zeros for null and use negation-of-zeros for
 // uninitialized.
 inline BlockHandle::BlockHandle()

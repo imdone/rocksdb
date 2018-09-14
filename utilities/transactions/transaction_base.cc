@@ -277,7 +277,7 @@ std::vector<Status> TransactionBaseImpl::MultiGetForUpdate(
     }
   }
 
-  // TODO(agiardullo): optimize multiget?
+  // TODO (agiardullo): optimize multiget? id:407
   std::vector<Status> stat_list(num_keys);
   for (size_t i = 0; i < num_keys; ++i) {
     std::string* value = values ? &(*values)[i] : nullptr;

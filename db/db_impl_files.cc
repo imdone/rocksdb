@@ -142,7 +142,7 @@ void DBImpl::FindObsoleteFiles(JobContext* job_context, bool force,
           continue;
         }
 
-        // TODO(icanadi) clean up this mess to avoid having one-off "/" prefixes
+        // TODO (icanadi) clean up this mess to avoid having one-off "/" prefixes id:54
         job_context->full_scan_candidate_files.emplace_back(
             "/" + file, path);
       }
@@ -412,7 +412,7 @@ void DBImpl::PurgeObsoleteFiles(JobContext& state, bool schedule_only) {
         // manifest, which is equal to state.pending_manifest_file_number. We
         // should not delete that file
         //
-        // TODO(yhchiang): carefully modify the third condition to safely
+        // TODO (yhchiang): carefully modify the third condition to safely id:13
         //                 remove the temp options files.
         keep = (sst_live_map.find(number) != sst_live_map.end()) ||
                (number == state.pending_manifest_file_number) ||
@@ -619,7 +619,7 @@ uint64_t PrecomputeMinLogNumberToKeep(
   // logs references by memtables because a log referenced by the
   // first data structure could transition to the second under us.
   //
-  // TODO: iterating over all column families under db mutex.
+  // TODO: iterating over all column families under db mutex. id:79
   // should find more optimal solution
   auto min_log_in_prep_heap =
       prep_tracker->FindMinLogContainingOutstandingPrep();

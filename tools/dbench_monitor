@@ -6,15 +6,14 @@
 #
 
 #
-#dbench_monitor: monitor db_bench process for violation of memory utilization
+#dbench_monitor: monitor db_bench process for violation of memory utilization id:278
 #
 #default usage will monitor 'virtual memory size'. See below for standard options
 #passed to db_bench during this test.
 #
 # See also: ./pflag for the actual monitoring script that does the work
 #
-#NOTE:
-#  You may end up with some /tmp/ files if db_bench OR
+#NOTE: # You may end up with some /tmp/ files if db_bench OR id:331
 #  this script OR ./pflag was killed unceremoniously
 #
 #  If you see the script taking a long time, trying "kill"

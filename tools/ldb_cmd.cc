@@ -634,7 +634,7 @@ Options LDBCommand::PrepareOptionsForOpenDB() {
           LDBCommandExecuteResult::Failed(ARG_FIX_PREFIX_LEN + " must be > 0.");
     }
   }
-  // TODO(ajkr): this return value doesn't reflect the CF options changed, so
+  // TODO (ajkr): this return value doesn't reflect the CF options changed, so id:357
   // subcommands that rely on this won't see the effect of CF-related CLI args.
   // Such subcommands need to be changed to properly support CFs.
   return options_;
@@ -1424,7 +1424,7 @@ void DBDumperCommand::DoCommand() {
 
     switch (type) {
       case kLogFile:
-        // TODO(myabandeh): allow configuring is_write_commited
+        // TODO (myabandeh): allow configuring is_write_commited id:306
         DumpWalFile(path_, /* print_header_ */ true, /* print_values_ */ true,
                     true /* is_write_commited */, &exec_state_);
         break;
@@ -2937,10 +2937,10 @@ void DBFileDumperCommand::DoCommand() {
     std::cerr << "Error when getting WAL files" << std::endl;
   } else {
     for (auto& wal : wal_files) {
-      // TODO(qyang): option.wal_dir should be passed into ldb command
+      // TODO (qyang): option.wal_dir should be passed into ldb command id:279
       std::string filename = db_->GetOptions().wal_dir + wal->PathName();
       std::cout << filename << std::endl;
-      // TODO(myabandeh): allow configuring is_write_commited
+      // TODO (myabandeh): allow configuring is_write_commited id:332
       DumpWalFile(filename, true, true, true /* is_write_commited */,
                   &exec_state_);
     }

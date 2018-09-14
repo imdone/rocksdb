@@ -2415,7 +2415,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
       std::string value;
       s = db_.db->Get(ro, truth_iter->key(), &value);
       assert(s.ok());
-      // TODO(myabandeh): provide debugging hints
+      // TODO (myabandeh): provide debugging hints id:329
       assert(Slice(value) == truth_iter->value());
   }
   // Verify that the db iterator does not give any extra key/value
@@ -3670,7 +3670,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
                  uint64_t /*num_per_set*/ = 64 * 1024)
         : rand_(rand), mode_(mode), num_(num), next_(0) {
       if (mode_ == UNIQUE_RANDOM) {
-        // NOTE: if memory consumption of this approach becomes a concern,
+        // NOTE: if memory consumption of this approach becomes a concern, id:382
         // we can either break it into pieces and only random shuffle a section
         // each time. Alternatively, use a bit map implementation
         // (https://reviews.facebook.net/differential/diff/54627/)
@@ -4070,7 +4070,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
           break;
         }
       }
-      // TODO(shuzhang1989): Investigate why CompactFiles not working
+      // TODO (shuzhang1989): Investigate why CompactFiles not working id:355
       // auto compactionOptions = CompactionOptions();
       // db->CompactFiles(compactionOptions, file_names, 0);
       auto compactionOptions = CompactRangeOptions();
@@ -4096,7 +4096,7 @@ void VerifyDBFromDB(std::string& truth_db_name) {
         assert(meta.levels[0].files.size() + num_levels - 1 ==
                sorted_runs[k].size());
       } else if (compaction_style == kCompactionStyleFIFO) {
-        // TODO(gzh): FIFO compaction
+        // TODO (gzh): FIFO compaction id:304
         db->GetColumnFamilyMetaData(&meta);
         auto total_size = meta.levels[0].size;
         assert(total_size <=

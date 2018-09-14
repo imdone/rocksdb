@@ -228,7 +228,7 @@ TEST_F(DBTest, SkipDelay) {
       }
       // Use a small number to ensure a large delay that is still effective
       // when we do Put
-      // TODO(myabandeh): this is time dependent and could potentially make
+      // TODO (myabandeh): this is time dependent and could potentially make id:41
       // the test flaky
       auto token = dbfull()->TEST_write_controler().GetDelayToken(1);
       std::atomic<int> sleep_count(0);
@@ -681,7 +681,7 @@ TEST_F(DBTest, GetEncountersEmptyLevel) {
     // Step 4: Wait for compaction to finish
     dbfull()->TEST_WaitForCompact();
 
-    ASSERT_EQ(NumTableFilesAtLevel(0, 1), 1);  // XXX
+    ASSERT_EQ(NumTableFilesAtLevel(0, 1), 1);  // XXX  id:117
   } while (ChangeOptions(kSkipUniversalCompaction | kSkipFIFOCompaction));
 }
 #endif  // ROCKSDB_LITE
@@ -2655,7 +2655,7 @@ TEST_P(DBTestRandomized, Randomized) {
   const Snapshot* db_snap = nullptr;
   std::string k, v;
   for (int step = 0; step < N; step++) {
-    // TODO(sanjay): Test Get() works
+    // TODO (sanjay): Test Get() works id:59
     int p = rnd.Uniform(100);
     int minimum = 0;
     if (option_config_ == kHashSkipList || option_config_ == kHashLinkList ||
@@ -3596,7 +3596,7 @@ TEST_F(DBTest, GetThreadStatus) {
       env_->SetBackgroundThreads(kBottomPriCounts[test], Env::BOTTOM);
       // Wait to ensure the all threads has been registered
       unsigned int thread_type_counts[ThreadStatus::NUM_THREAD_TYPES];
-      // TODO(ajkr): it'd be better if SetBackgroundThreads returned only after
+      // TODO (ajkr): it'd be better if SetBackgroundThreads returned only after id:18
       // all threads have been registered.
       // Try up to 60 seconds.
       for (int num_try = 0; num_try < 60000; num_try++) {
@@ -3757,7 +3757,7 @@ TEST_P(DBTestWithParam, ThreadStatusSingleCompaction) {
     db_->GetIntProperty(DB::Properties::kNumRunningCompactions,
                         &num_running_compactions);
     ASSERT_EQ(num_running_compactions, 1);
-    // TODO(yhchiang): adding assert to verify each compaction stage.
+    // TODO (yhchiang): adding assert to verify each compaction stage. id:84
     TEST_SYNC_POINT("DBTest::ThreadStatusSingleCompaction:2");
 
     // repeat the test with disabling thread tracking.

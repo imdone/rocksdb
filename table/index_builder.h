@@ -253,7 +253,7 @@ class HashIndexBuilder : public IndexBuilder {
       }
 
       // need a hard copy otherwise the underlying data changes all the time.
-      // TODO(kailiu) ToString() is expensive. We may speed up can avoid data
+      // TODO (kailiu) ToString() is expensive. We may speed up can avoid data id:318
       // copy.
       pending_entry_prefix_ = key_prefix.ToString();
       pending_block_num_ = 1;

@@ -326,7 +326,7 @@ class GTEST_API_ SingleFailureChecker {
 
 #if GTEST_OS_LINUX
 
-// TODO(kenton@google.com): Use autoconf to detect availability of
+// TODO (kenton@google.com): Use autoconf to detect availability of id:260
 // gettimeofday().
 # define GTEST_HAS_GETTIMEOFDAY_ 1
 
@@ -365,9 +365,9 @@ class GTEST_API_ SingleFailureChecker {
 
 # if GTEST_OS_WINDOWS_MINGW
 // MinGW has gettimeofday() but not _ftime64().
-// TODO(kenton@google.com): Use autoconf to detect availability of
+// TODO (kenton@google.com): Use autoconf to detect availability of id:213
 //   gettimeofday().
-// TODO(kenton@google.com): There are other ways to get the time on
+// TODO (kenton@google.com): There are other ways to get the time on id:296
 //   Windows, like GetTickCount() or GetSystemTimeAsFileTime().  MinGW
 //   supports these.  consider using them instead.
 #  define GTEST_HAS_GETTIMEOFDAY_ 1
@@ -382,7 +382,7 @@ class GTEST_API_ SingleFailureChecker {
 #else
 
 // Assume other platforms have gettimeofday().
-// TODO(kenton@google.com): Use autoconf to detect availability of
+// TODO (kenton@google.com): Use autoconf to detect availability of id:269
 //   gettimeofday().
 # define GTEST_HAS_GETTIMEOFDAY_ 1
 
@@ -1410,7 +1410,7 @@ bool ParseNaturalNumber(const ::std::string& str, Integer* number) {
 
   const bool parse_success = *end == '\0' && errno == 0;
 
-  // TODO(vladl@google.com): Convert this to compile time assertion when it is
+  // TODO (vladl@google.com): Convert this to compile time assertion when it is id:322
   // available.
   GTEST_CHECK_(sizeof(Integer) <= sizeof(parsed));
 
@@ -1881,7 +1881,7 @@ std::string UnitTestOptions::GetAbsolutePathToOutputFile() {
 
   internal::FilePath output_name(colon + 1);
   if (!output_name.IsAbsolutePath())
-    // TODO(wan@google.com): on Windows \some\path is not an absolute
+    // TODO (wan@google.com): on Windows \some\path is not an absolute id:261
     // path (as its meaning depends on the current drive), yet the
     // following logic for turning it into an absolute path is wrong.
     // Fix it.
@@ -2254,7 +2254,7 @@ TimeInMillis GetTimeInMillis() {
   SYSTEMTIME now_systime;
   FILETIME now_filetime;
   ULARGE_INTEGER now_int64;
-  // TODO(kenton@google.com): Shouldn't this just use
+  // TODO (kenton@google.com): Shouldn't this just use id:348
   //   GetSystemTimeAsFileTime()?
   GetSystemTime(&now_systime);
   if (SystemTimeToFileTime(&now_systime, &now_filetime)) {
@@ -2270,7 +2270,7 @@ TimeInMillis GetTimeInMillis() {
 
   // MSVC 8 deprecates _ftime64(), so we want to suppress warning 4996
   // (deprecated function) there.
-  // TODO(kenton@google.com): Use GetTickCount()?  Or use
+  // TODO (kenton@google.com): Use GetTickCount()? Or use id:297
   //   SystemTimeToFileTime()
   GTEST_DISABLE_MSC_WARNINGS_PUSH_(4996)
   _ftime64(&now);
@@ -2791,7 +2791,7 @@ AssertionResult DoubleNearPredFormat(const char* expr1,
   const double diff = fabs(val1 - val2);
   if (diff <= abs_error) return AssertionSuccess();
 
-  // TODO(wan): do not print the value of an expression if it's
+  // TODO (wan): do not print the value of an expression if it's id:270
   // already a literal.
   return AssertionFailure()
       << "The difference between " << expr1 << " and " << expr2
@@ -3831,7 +3831,7 @@ Result HandleSehExceptionsInMethodIfSupported(
 template <class T, typename Result>
 Result HandleExceptionsInMethodIfSupported(
     T* object, Result (T::*method)(), const char* location) {
-  // NOTE: The user code can affect the way in which Google Test handles
+  // NOTE: The user code can affect the way in which Google Test handles id:323
   // exceptions by setting GTEST_FLAG(catch_exceptions), but only before
   // RUN_ALL_TESTS() starts. It is technically possible to check the flag
   // after the exception is caught and either report or re-throw the
@@ -4689,7 +4689,7 @@ void TestEventRepeater::Append(TestEventListener *listener) {
   listeners_.push_back(listener);
 }
 
-// TODO(vladl@google.com): Factor the search functionality into Vector::Find.
+// TODO (vladl@google.com): Factor the search functionality into Vector::Find. id:358
 TestEventListener* TestEventRepeater::Release(TestEventListener *listener) {
   for (size_t i = 0; i < listeners_.size(); ++i) {
     if (listeners_[i] == listener) {
@@ -4851,7 +4851,7 @@ void XmlUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
     xmlout = posix::FOpen(output_file_.c_str(), "w");
   }
   if (xmlout == NULL) {
-    // TODO(wan): report the reason of the failure.
+    // TODO (wan): report the reason of the failure. id:349
     //
     // We don't do it for now as:
     //
@@ -4883,7 +4883,7 @@ void XmlUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
 // module will consist of ordinary English text.
 // If this module is ever modified to produce version 1.1 XML output,
 // most invalid characters can be retained using character references.
-// TODO(wan): It might be nice to have a minimally invasive, human-readable
+// TODO (wan): It might be nice to have a minimally invasive, human-readable id:298
 // escaping scheme for invalid characters, rather than dropping them.
 std::string XmlUnitTestResultPrinter::EscapeXml(
     const std::string& str, bool is_attribute) {
@@ -5033,7 +5033,7 @@ void XmlUnitTestResultPrinter::OutputXmlAttribute(
 }
 
 // Prints an XML representation of a TestInfo object.
-// TODO(wan): There is also value in printing properties with the plain printer.
+// TODO (wan): There is also value in printing properties with the plain printer. id:271
 void XmlUnitTestResultPrinter::OutputXmlTestInfo(::std::ostream* stream,
                                                  const char* test_case_name,
                                                  const TestInfo& test_info) {
@@ -5667,7 +5667,7 @@ int UnitTest::Run() {
     // VC++ doesn't define _set_abort_behavior() prior to the version 8.0.
     // Users of prior VC versions shall suffer the agony and pain of
     // clicking through the countless debug dialogs.
-    // TODO(vladl@google.com): find a way to suppress the abort dialog() in the
+    // TODO (vladl@google.com): find a way to suppress the abort dialog() in the id:324
     // debug mode when compiled with VC 7.1 or lower.
     if (!GTEST_FLAG(break_on_failure))
       _set_abort_behavior(
@@ -6529,7 +6529,7 @@ static bool HasGoogleTestFlagPrefix(const char* str) {
 //   @Y    changes the color to yellow.
 //   @D    changes to the default terminal text color.
 //
-// TODO(wan@google.com): Write tests for this once we add stdout
+// TODO (wan@google.com): Write tests for this once we add stdout id:359
 // capturing to Google Test.
 static void PrintColorEncoded(const char* str) {
   GTestColor color = COLOR_DEFAULT;  // The current color.
@@ -6996,7 +6996,7 @@ static const char kDeathTestInternalError = 'I';
 // statement, which is not allowed; THREW means that the test statement
 // returned control by throwing an exception.  IN_PROGRESS means the test
 // has not yet concluded.
-// TODO(vladl@google.com): Unify names and possibly values for
+// TODO (vladl@google.com): Unify names and possibly values for id:350
 // AbortReason, DeathTestOutcome, and flag characters above.
 enum DeathTestOutcome { IN_PROGRESS, DIED, LIVED, RETURNED, THREW };
 
@@ -7996,7 +7996,7 @@ int GetStatusFileDescriptor(unsigned int parent_process_id,
                    StreamableToString(parent_process_id));
   }
 
-  // TODO(vladl@google.com): Replace the following check with a
+  // TODO (vladl@google.com): Replace the following check with a id:299
   // compile-time assertion when available.
   GTEST_CHECK_(sizeof(HANDLE) <= sizeof(size_t));
 
@@ -8351,7 +8351,7 @@ bool FilePath::DirectoryExists() const {
 // root directory per disk drive.)
 bool FilePath::IsRootDirectory() const {
 #if GTEST_OS_WINDOWS
-  // TODO(wan@google.com): on Windows a network share like
+  // TODO (wan@google.com): on Windows a network share like id:272
   // \\server\share can be a root directory, although it cannot be the
   // current directory.  Handle this properly.
   return pathname_.length() == 3 && IsAbsolutePath();
@@ -8451,7 +8451,7 @@ FilePath FilePath::RemoveTrailingPathSeparator() const {
 // Removes any redundant separators that might be in the pathname.
 // For example, "bar///foo" becomes "bar/foo". Does not eliminate other
 // redundancies that might be in a pathname involving "." or "..".
-// TODO(wan@google.com): handle Windows network shares (e.g. \\server\share).
+// TODO (wan@google.com): handle Windows network shares (e.g. \\server\share). id:325
 void FilePath::Normalize() {
   if (pathname_.c_str() == NULL) {
     pathname_ = "";
@@ -8686,7 +8686,7 @@ Mutex::Mutex()
 Mutex::~Mutex() {
   // Static mutexes are leaked intentionally. It is not thread-safe to try
   // to clean them up.
-  // TODO(yukawa): Switch to Slim Reader/Writer (SRW) Locks, which requires
+  // TODO (yukawa): Switch to Slim Reader/Writer (SRW) Locks, which requires id:360
   // nothing to clean it up but is available only on Vista and later.
   // http://msdn.microsoft.com/en-us/library/windows/desktop/aa904937.aspx
   if (type_ == kDynamic) {
@@ -8768,7 +8768,7 @@ class ThreadWithParamSupport : public ThreadWithParamBase {
                              Notification* thread_can_start) {
     ThreadMainParam* param = new ThreadMainParam(runnable, thread_can_start);
     DWORD thread_id;
-    // TODO(yukawa): Consider to use _beginthreadex instead.
+    // TODO (yukawa): Consider to use _beginthreadex instead. id:351
     HANDLE thread_handle = ::CreateThread(
         NULL,    // Default security.
         0,       // Default stack size.
@@ -9120,7 +9120,7 @@ std::string FormatRegexSyntaxError(const char* regex, int index) {
 // otherwise returns true.
 bool ValidateRegex(const char* regex) {
   if (regex == NULL) {
-    // TODO(wan@google.com): fix the source file location in the
+    // TODO (wan@google.com): fix the source file location in the id:300
     // assertion failures to match where the regex is used in user
     // code.
     ADD_FAILURE() << "NULL is not a valid simple regular expression.";
@@ -9751,7 +9751,7 @@ void PrintBytesInObjectToImpl(const unsigned char* obj_bytes, size_t count,
   // If the object size is bigger than kThreshold, we'll have to omit
   // some details by printing only the first and the last kChunkSize
   // bytes.
-  // TODO(wan): let the user control the threshold using a flag.
+  // TODO (wan): let the user control the threshold using a flag. id:273
   if (count < kThreshold) {
     PrintByteSegmentInObjectTo(obj_bytes, 0, count, os);
   } else {

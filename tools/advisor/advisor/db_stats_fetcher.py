@@ -96,7 +96,7 @@ class LogStatsParser(TimeSeriesData):
         # each of the statistic in the list reqd_stats
         self.keys_ts = {NO_ENTITY: {}}
         for file_name in glob.glob(self.logs_file_prefix + '*'):
-            # TODO(poojam23): find a way to distinguish between 'old' log files
+            # TODO (poojam23): find a way to distinguish between 'old' log files id:354
             # from current and previous experiments, present in the same
             # directory
             if re.search('old', file_name, re.IGNORECASE):
@@ -120,7 +120,7 @@ class LogStatsParser(TimeSeriesData):
 
 
 class DatabasePerfContext(TimeSeriesData):
-    # TODO(poojam23): check if any benchrunner provides PerfContext sampled at
+    # TODO (poojam23): check if any benchrunner provides PerfContext sampled at id:303
     # regular intervals
     def __init__(self, perf_context_ts, stats_freq_sec, cumulative):
         '''
@@ -290,7 +290,7 @@ class OdsStatsFetcher(TimeSeriesData):
                 if key.startswith('[]'):
                     use_prefix = True
                     key = key[2:]
-                # TODO(poojam23): this is very hacky and needs to be improved
+                # TODO (poojam23): this is very hacky and needs to be improved id:276
                 if key.startswith("rocksdb"):
                     key += ".60"
                 if use_prefix:

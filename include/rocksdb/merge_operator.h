@@ -136,7 +136,7 @@ class MergeOperator {
   // internally keep track of the operations, and apply them in the
   // correct order once a base-value (a Put/Delete/End-of-Database) is seen.
   //
-  // TODO: Presently there is no way to differentiate between error/corruption
+  // TODO: Presently there is no way to differentiate between error/corruption id:152
   // and simply "return false". For now, the client should simply return
   // false in any case it cannot perform partial-merge, regardless of reason.
   // If there is corruption in the data, handle it in the FullMergeV2() function
@@ -177,7 +177,7 @@ class MergeOperator {
   // The name of the MergeOperator. Used to check for MergeOperator
   // mismatches (i.e., a DB created with one MergeOperator is
   // accessed using a different MergeOperator)
-  // TODO: the name is currently not stored persistently and thus
+  // TODO: the name is currently not stored persistently and thus id:128
   //       no checking is enforced. Client is responsible for providing
   //       consistent MergeOperator between DB opens.
   virtual const char* Name() const = 0;

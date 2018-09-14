@@ -1038,10 +1038,10 @@ TEST_P(SeqAdvanceConcurrentTest, SeqAdvanceConcurrentTest) {
   // Number of different txn types we use in this test
   const size_t type_cnt = 5;
   // The size of the first write group
-  // TODO(myabandeh): This should be increase for pre-release tests
+  // TODO (myabandeh): This should be increase for pre-release tests id:408
   const size_t first_group_size = 2;
   // Total number of txns we run in each test
-  // TODO(myabandeh): This should be increase for pre-release tests
+  // TODO (myabandeh): This should be increase for pre-release tests id:346
   const size_t txn_cnt = first_group_size + 1;
 
   size_t base[txn_cnt + 1] = {
@@ -1134,7 +1134,7 @@ TEST_P(SeqAdvanceConcurrentTest, SeqAdvanceConcurrentTest) {
       // This would result in different write groups in each run of the test. We
       // still keep the test since although non-deterministic and hard to debug,
       // it is still useful to have.
-      // TODO(myabandeh): Add a deterministic unit test for two_write_queues
+      // TODO (myabandeh): Add a deterministic unit test for two_write_queues id:399
     }
 
     // Check if memtable inserts advanced seq number as expected

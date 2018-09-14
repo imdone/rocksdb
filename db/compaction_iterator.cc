@@ -221,7 +221,7 @@ void CompactionIterator::NextFromInput() {
     if (!ParseInternalKey(key_, &ikey_)) {
       // If `expect_valid_internal_key_` is false, return the corrupted key
       // and let the caller decide what to do with it.
-      // TODO(noetzli): We should have a more elegant solution for this.
+      // TODO (noetzli): We should have a more elegant solution for this. id:6
       if (expect_valid_internal_key_) {
         assert(!"Corrupted internal key not expected.");
         status_ = Status::Corruption("Corrupted internal key not expected.");
@@ -275,7 +275,7 @@ void CompactionIterator::NextFromInput() {
     } else {
       // Update the current key to reflect the new sequence number/type without
       // copying the user key.
-      // TODO(rven): Compaction filter does not process keys in this path
+      // TODO (rven): Compaction filter does not process keys in this path id:24
       // Need to have the compaction filter process multiple versions
       // if we have versions on both sides of a snapshot
       current_key_.UpdateInternalKey(ikey_.sequence, ikey_.type);
@@ -465,7 +465,7 @@ void CompactionIterator::NextFromInput() {
       // is the same as the visibility of a previous instance of the
       // same key, then this kv is not visible in any snapshot.
       // Hidden by an newer entry for same user key
-      // TODO(noetzli): why not > ?
+      // TODO (noetzli): why not > ? id:30
       //
       // Note: Dropping this key will not affect TransactionDB write-conflict
       // checking since there has already been a record returned for this key
@@ -481,7 +481,7 @@ void CompactionIterator::NextFromInput() {
                ikeyNotNeededForIncrementalSnapshot() &&
                compaction_->KeyNotExistsBeyondOutputLevel(ikey_.user_key,
                                                           &level_ptrs_)) {
-      // TODO(noetzli): This is the only place where we use compaction_
+      // TODO (noetzli): This is the only place where we use compaction_ id:106
       // (besides the constructor). We should probably get rid of this
       // dependency and find a way to do similar filtering during flushes.
       //
@@ -550,7 +550,7 @@ void CompactionIterator::NextFromInput() {
         status_ = s;
         return;
       } else if (merge_out_iter_.Valid()) {
-        // NOTE: key, value, and ikey_ refer to old entries.
+        // NOTE: key, value, and ikey_ refer to old entries. id:2
         //       These will be correctly set below.
         key_ = merge_out_iter_.key();
         value_ = merge_out_iter_.value();

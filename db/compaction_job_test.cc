@@ -63,7 +63,7 @@ void VerifyInitializationOfCompactionJobStats(
 
 }  // namespace
 
-// TODO(icanadi) Make it simpler once we mock out VersionSet
+// TODO (icanadi) Make it simpler once we mock out VersionSet id:107
 class CompactionJobTest : public testing::Test {
  public:
   CompactionJobTest()
@@ -255,7 +255,7 @@ class CompactionJobTest : public testing::Test {
     LogBuffer log_buffer(InfoLogLevel::INFO_LEVEL, db_options_.info_log.get());
     mutex_.Lock();
     EventLogger event_logger(db_options_.info_log.get());
-    // TODO(yiwu) add a mock snapshot checker and add test for it.
+    // TODO (yiwu) add a mock snapshot checker and add test for it. id:3
     SnapshotChecker* snapshot_checker = nullptr;
     CompactionJob compaction_job(
         0, &compaction, db_options_, env_options_, versions_.get(),
@@ -910,7 +910,7 @@ TEST_F(CompactionJobTest, MultiSingleDelete) {
 
 // This test documents the behavior where a corrupt key follows a deletion or a
 // single deletion and the (single) deletion gets removed while the corrupt key
-// gets written out. TODO(noetzli): We probably want a better way to treat
+// gets written out. TODO (noetzli): We probably want a better way to treat id:8
 // corrupt keys.
 TEST_F(CompactionJobTest, CorruptionAfterDeletion) {
   NewDB();

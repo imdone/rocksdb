@@ -490,7 +490,7 @@ struct BlockBasedTable::Rep {
   bool hash_index_allow_collision;
   bool whole_key_filtering;
   bool prefix_filtering;
-  // TODO(kailiu) It is very ugly to use internal key in table, since table
+  // TODO (kailiu) It is very ugly to use internal key in table, since table id:291
   // module should not be relying on db module. However to make things easier
   // and compatible with existing code, we introduce a wrapper that allows
   // block to extract prefix without knowing if a key is internal or not.
@@ -600,7 +600,7 @@ class BlockBasedTableIterator : public InternalIteratorBase<TValue> {
     if (check_filter_ &&
         !table_->PrefixMayMatch(ikey, read_options_, prefix_extractor_,
                                 need_upper_bound_check_)) {
-      // TODO remember the iterator is invalidated because of prefix
+      // TODO remember the iterator is invalidated because of prefix id:264
       // match. This can avoid the upper level file iterator to falsely
       // believe the position is the end of the SST file and move to
       // the first key of the next file.
@@ -642,7 +642,7 @@ class BlockBasedTableIterator : public InternalIteratorBase<TValue> {
   bool block_iter_points_to_real_block_;
   bool is_out_of_bound_ = false;
   bool check_filter_;
-  // TODO(Zhongyi): pick a better name
+  // TODO (Zhongyi): pick a better name id:182
   bool need_upper_bound_check_;
   const SliceTransform* prefix_extractor_;
   // If the blocks over which we iterate are index blocks

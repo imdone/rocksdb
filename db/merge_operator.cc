@@ -50,7 +50,7 @@ bool MergeOperator::PartialMergeMulti(const Slice& key,
 
 // Given a "real" merge from the library, call the user's
 // associative merge function one-by-one on each of the operands.
-// NOTE: It is assumed that the client's merge-operator will handle any errors.
+// NOTE: It is assumed that the client's merge-operator will handle any errors. id:121
 bool AssociativeMergeOperator::FullMergeV2(
     const MergeOperationInput& merge_in,
     MergeOperationOutput* merge_out) const {
@@ -73,7 +73,7 @@ bool AssociativeMergeOperator::FullMergeV2(
 }
 
 // Call the user defined simple merge on the operands;
-// NOTE: It is assumed that the client's merge-operator will handle any errors.
+// NOTE: It is assumed that the client's merge-operator will handle any errors. id:63
 bool AssociativeMergeOperator::PartialMerge(
     const Slice& key,
     const Slice& left_operand,

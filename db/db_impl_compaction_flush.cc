@@ -242,7 +242,7 @@ void DBImpl::NotifyOnFlushBegin(ColumnFamilyData* cfd, FileMetaData* file_meta,
   {
     FlushJobInfo info;
     info.cf_name = cfd->GetName();
-    // TODO(yhchiang): make db_paths dynamic in case flush does not
+    // TODO (yhchiang): make db_paths dynamic in case flush does not id:52
     //                 go to L0 in the future.
     info.file_path = MakeTableFileName(cfd->ioptions()->cf_paths[0].path,
                                        file_meta->fd.GetNumber());
@@ -293,7 +293,7 @@ void DBImpl::NotifyOnFlushCompleted(ColumnFamilyData* cfd,
   {
     FlushJobInfo info;
     info.cf_name = cfd->GetName();
-    // TODO(yhchiang): make db_paths dynamic in case flush does not
+    // TODO (yhchiang): make db_paths dynamic in case flush does not id:11
     //                 go to L0 in the future.
     info.file_path = MakeTableFileName(cfd->ioptions()->cf_paths[0].path,
                                        file_meta->fd.GetNumber());
@@ -335,7 +335,7 @@ Status DBImpl::CompactRange(const CompactRangeOptions& options,
 
   bool flush_needed = true;
   if (begin != nullptr && end != nullptr) {
-    // TODO(ajkr): We could also optimize away the flush in certain cases where
+    // TODO (ajkr): We could also optimize away the flush in certain cases where id:77
     // one/both sides of the interval are unbounded. But it requires more
     // changes to RangesOverlapWithMemtables.
     Range range(*begin, *end);
@@ -547,7 +547,7 @@ Status DBImpl::CompactFilesImpl(
   }
 
   ColumnFamilyMetaData cf_meta;
-  // TODO(yhchiang): can directly use version here if none of the
+  // TODO (yhchiang): can directly use version here if none of the id:35
   // following functions call is pluggable to external developers.
   version->GetColumnFamilyMetaData(&cf_meta);
 
@@ -1337,7 +1337,7 @@ DBImpl::FlushRequest DBImpl::PopFirstFromFlushQueue() {
   assert(unscheduled_flushes_ >= static_cast<int>(flush_req.size()));
   unscheduled_flushes_ -= static_cast<int>(flush_req.size());
   flush_queue_.pop_front();
-  // TODO: need to unset flush reason?
+  // TODO: need to unset flush reason? id:111
   return flush_req;
 }
 
@@ -1786,7 +1786,7 @@ Status DBImpl::BackgroundCompaction(bool* made_progress,
     // eventually be installed into SuperVersion
     auto* mutable_cf_options = cfd->GetLatestMutableCFOptions();
     if (!mutable_cf_options->disable_auto_compactions && !cfd->IsDropped()) {
-      // NOTE: try to avoid unnecessary copy of MutableCFOptions if
+      // NOTE: try to avoid unnecessary copy of MutableCFOptions if id:53
       // compaction is not necessary. Need to make sure mutex is held
       // until we make a copy in the following code
       TEST_SYNC_POINT("DBImpl::BackgroundCompaction():BeforePickCompaction");
@@ -1843,7 +1843,7 @@ Status DBImpl::BackgroundCompaction(bool* made_progress,
     // Nothing to do
     ROCKS_LOG_BUFFER(log_buffer, "Compaction nothing to do");
   } else if (c->deletion_compaction()) {
-    // TODO(icanadi) Do we want to honor snapshots here? i.e. not delete old
+    // TODO (icanadi) Do we want to honor snapshots here? i.e. not delete old id:12
     // file if there is alive snapshot pointing to it
     assert(c->num_input_files(1) == 0);
     assert(c->level() == 0);
@@ -1868,7 +1868,7 @@ Status DBImpl::BackgroundCompaction(bool* made_progress,
   } else if (!trivial_move_disallowed && c->IsTrivialMove()) {
     TEST_SYNC_POINT("DBImpl::BackgroundCompaction:TrivialMove");
     // Instrument for event update
-    // TODO(yhchiang): add op details for showing trivial-move.
+    // TODO (yhchiang): add op details for showing trivial-move. id:78
     ThreadStatusUtil::SetColumnFamily(
         c->column_family_data(), c->column_family_data()->ioptions()->env,
         immutable_db_options_.enable_thread_tracking);
@@ -2166,7 +2166,7 @@ void DBImpl::InstallSuperVersionAndScheduleWork(
     ColumnFamilyData* cfd, SuperVersionContext* sv_context,
     const MutableCFOptions& mutable_cf_options,
     FlushReason /* flush_reason */) {
-  // TODO(yanqin) investigate if 'flush_reason' can be removed since it's not
+  // TODO (yanqin) investigate if 'flush_reason' can be removed since it's not id:36
   // used.
   mutex_.AssertHeld();
 

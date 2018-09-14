@@ -189,7 +189,7 @@ bool MemTable::ShouldFlushNow() const {
   // Therefore, setting the last block to be at most "0.75 full" avoids both
   // cases.
   //
-  // NOTE: the average percentage of waste space of this approach can be counted
+  // NOTE: the average percentage of waste space of this approach can be counted id:62
   // as: "arena block size * 0.25 / write buffer size". User who specify a small
   // write buffer size and/or big arena block size may suffer.
   return arena_.AllocatedAndUnused() < kArenaBlockSize / 4;

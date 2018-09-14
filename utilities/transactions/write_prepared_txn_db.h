@@ -125,7 +125,7 @@ class WritePreparedTxnDB : public PessimisticTransactionDB {
                       prep_seq, snapshot_seq, min_uncommitted);
     // Here we try to infer the return value without looking into prepare list.
     // This would help avoiding synchronization over a shared map.
-    // TODO(myabandeh): optimize this. This sequence of checks must be correct
+    // TODO (myabandeh): optimize this. This sequence of checks must be correct id:409
     // but not necessary efficient
     if (prep_seq == 0) {
       // Compaction will output keys to bottom-level with sequence number 0 if
@@ -159,7 +159,7 @@ class WritePreparedTxnDB : public PessimisticTransactionDB {
     }
     // Note: since min_uncommitted does not include the delayed_prepared_ we
     // should check delayed_prepared_ first before applying this optimization.
-    // TODO(myabandeh): include delayed_prepared_ in min_uncommitted
+    // TODO (myabandeh): include delayed_prepared_ in min_uncommitted id:347
     if (prep_seq < min_uncommitted) {
       ROCKS_LOG_DETAILS(info_log_,
                         "IsInSnapshot %" PRIu64 " in %" PRIu64

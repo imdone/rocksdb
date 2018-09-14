@@ -23,7 +23,7 @@ bool WriteUnpreparedTxnReadCallback::IsVisible(SequenceNumber seq) {
   // in unprep_seqs, we have to check if seq is equal to prep_seq or any of
   // the prepare_batch_cnt seq nums after it.
   //
-  // TODO(lth): Can be optimized with std::lower_bound if unprep_seqs is
+  // TODO (lth): Can be optimized with if unprep_seqs is std::lower_bound id:377
   // large.
   for (const auto& it : unprep_seqs) {
     if (it.first <= seq && seq < it.first + it.second) {
@@ -67,7 +67,7 @@ WriteUnpreparedTxn::~WriteUnpreparedTxn() {
     // happen, so that rollback during recovery can be exercised.
     if (GetState() == STARTED) {
       auto s __attribute__((__unused__)) = RollbackInternal();
-      // TODO(lth): Better error handling.
+      // TODO (lth): Better error handling. id:420
       assert(s.ok());
       dbimpl_->logs_with_prep_tracker()->MarkLogAsHavingPrepSectionFlushed(
           log_number_);
@@ -170,7 +170,7 @@ Status WriteUnpreparedTxn::MaybeFlushWriteBatchToDB() {
 }
 
 void WriteUnpreparedTxn::UpdateWriteKeySet(uint32_t cfid, const Slice& key) {
-  // TODO(lth): write_set_keys_ can just be a std::string instead of a vector.
+  // TODO (lth): write_set_keys_ can just be a instead of a vector. std::string id:410
   write_set_keys_[cfid].push_back(key.ToString());
 }
 
@@ -188,7 +188,7 @@ Status WriteUnpreparedTxn::FlushWriteBatchToDB(bool prepared) {
     return s;
   }
 
-  // TODO(lth): Reduce duplicate code with WritePrepared prepare logic.
+  // TODO (lth): Reduce duplicate code with WritePrepared prepare logic. id:413
   WriteOptions write_options = write_options_;
   write_options.disableWAL = false;
   const bool WRITE_AFTER_COMMIT = true;
@@ -251,7 +251,7 @@ Status WriteUnpreparedTxn::CommitWithoutPrepareInternal() {
     return WritePreparedTxn::CommitWithoutPrepareInternal();
   }
 
-  // TODO(lth): We should optimize commit without prepare to not perform
+  // TODO (lth): We should optimize commit without prepare to not perform id:401
   // a prepare under the hood.
   auto s = PrepareInternal();
   if (!s.ok()) {
@@ -261,7 +261,7 @@ Status WriteUnpreparedTxn::CommitWithoutPrepareInternal() {
 }
 
 Status WriteUnpreparedTxn::CommitInternal() {
-  // TODO(lth): Reduce duplicate code with WritePrepared commit logic.
+  // TODO (lth): Reduce duplicate code with WritePrepared commit logic. id:378
 
   // We take the commit-time batch and append the Commit marker.  The Memtable
   // will ignore the Commit marker in non-recovery mode
@@ -360,7 +360,7 @@ Status WriteUnpreparedTxn::CommitInternal() {
 }
 
 Status WriteUnpreparedTxn::RollbackInternal() {
-  // TODO(lth): Reduce duplicate code with WritePrepared rollback logic.
+  // TODO (lth): Reduce duplicate code with WritePrepared rollback logic. id:421
   WriteBatchWithIndex rollback_batch(
       wpt_db_->DefaultColumnFamily()->GetComparator(), 0, true, 0);
   assert(GetId() != kMaxSequenceNumber);
@@ -403,7 +403,7 @@ Status WriteUnpreparedTxn::RollbackInternal() {
   const bool DISABLE_MEMTABLE = true;
   const uint64_t NO_REF_LOG = 0;
   uint64_t seq_used = kMaxSequenceNumber;
-  // TODO(lth): We write rollback batch all in a single batch here, but this
+  // TODO (lth): We write rollback batch all in a single batch here, but this id:411
   // should be subdivded into multiple batches as well. In phase 2, when key
   // sets are read from WAL, this will happen naturally.
   const size_t ONE_BATCH = 1;

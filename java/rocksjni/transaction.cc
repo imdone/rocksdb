@@ -157,7 +157,7 @@ typedef std::function<rocksdb::Status(const rocksdb::ReadOptions&,
                                       const rocksdb::Slice&, std::string*)>
     FnGet;
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:163
 jbyteArray txn_get_helper(JNIEnv* env, const FnGet& fn_get,
                           const jlong& jread_options_handle,
                           const jbyteArray& jkey, const jint& jkey_part_len) {
@@ -234,7 +234,7 @@ jbyteArray Java_org_rocksdb_Transaction_get__JJ_3BI(
   return txn_get_helper(env, fn_get, jread_options_handle, jkey, jkey_part_len);
 }
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:144
 // used by txn_multi_get_helper below
 std::vector<rocksdb::ColumnFamilyHandle*> txn_column_families_helper(
     JNIEnv* env, jlongArray jcolumn_family_handles, bool* has_exception) {
@@ -283,7 +283,7 @@ void free_parts(
   }
 }
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:103
 // cf multi get
 jobjectArray txn_multi_get_helper(JNIEnv* env, const FnMultiGet& fn_multi_get,
                                   const jlong& jread_options_handle,
@@ -533,7 +533,7 @@ typedef std::function<rocksdb::Status(const rocksdb::Slice&,
                                       const rocksdb::Slice&)>
     FnWriteKV;
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:161
 void txn_write_kv_helper(JNIEnv* env, const FnWriteKV& fn_write_kv,
                          const jbyteArray& jkey, const jint& jkey_part_len,
                          const jbyteArray& jval, const jint& jval_len) {
@@ -605,7 +605,7 @@ typedef std::function<rocksdb::Status(const rocksdb::SliceParts&,
                                       const rocksdb::SliceParts&)>
     FnWriteKVParts;
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:190
 void txn_write_kv_parts_helper(JNIEnv* env,
                                const FnWriteKVParts& fn_write_kv_parts,
                                const jobjectArray& jkey_parts,
@@ -777,7 +777,7 @@ void Java_org_rocksdb_Transaction_merge__J_3BI_3BI(
 
 typedef std::function<rocksdb::Status(const rocksdb::Slice&)> FnWriteK;
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:164
 void txn_write_k_helper(JNIEnv* env, const FnWriteK& fn_write_k,
                         const jbyteArray& jkey, const jint& jkey_part_len) {
   jbyte* key = env->GetByteArrayElements(jkey, nullptr);
@@ -835,7 +835,7 @@ void Java_org_rocksdb_Transaction_delete__J_3BI(JNIEnv* env, jobject /*jobj*/,
 typedef std::function<rocksdb::Status(const rocksdb::SliceParts&)>
     FnWriteKParts;
 
-// TODO(AR) consider refactoring to share this between here and rocksjni.cc
+// TODO (AR) consider refactoring to share this between here and rocksjni.cc id:145
 void txn_write_k_parts_helper(JNIEnv* env,
                               const FnWriteKParts& fn_write_k_parts,
                               const jobjectArray& jkey_parts,

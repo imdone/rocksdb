@@ -797,9 +797,9 @@ Status RocksDBOptionsParser::VerifyTableFactory(
                                  const TableFactory>(file_tf),
           sanity_check_level);
     }
-    // TODO(yhchiang): add checks for other table factory types
+    // TODO (yhchiang): add checks for other table factory types id:177
   } else {
-    // TODO(yhchiang): further support sanity check here
+    // TODO (yhchiang): further support sanity check here id:251
   }
   return Status::OK();
 }

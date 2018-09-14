@@ -424,7 +424,7 @@ class DB {
 #ifndef ROCKSDB_LITE
   // Contains all valid property arguments for GetProperty().
   //
-  // NOTE: Property names cannot end in numbers since those are interpreted as
+  // NOTE: Property names cannot end in numbers since those are interpreted as id:135
   //       arguments, e.g., see kNumFilesAtLevelPrefix.
   struct Properties {
     //  "rocksdb.num-files-at-level<N>" - returns string containing the number
@@ -857,7 +857,7 @@ class DB {
   // disable_auto_compactions option for each column family to 'false', after
   // which it will schedule a flush/compaction.
   //
-  // NOTE: Setting disable_auto_compactions to 'false' through SetOptions() API
+  // NOTE: Setting disable_auto_compactions to 'false' through SetOptions() API id:94
   // does NOT schedule a flush/compaction afterwards, and only changes the
   // parameter itself within the column family option.
   //

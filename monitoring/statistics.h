@@ -62,7 +62,7 @@ class StatisticsImpl : public Statistics {
  private:
   // If non-nullptr, forwards updates to the object pointed to by `stats_`.
   std::shared_ptr<Statistics> stats_;
-  // TODO(ajkr): clean this up since there are no internal stats anymore
+  // TODO (ajkr): clean this up since there are no internal stats anymore id:225
   bool enable_internal_stats_;
   // Synchronizes anything that operates across other cores' local data,
   // such that operations like Reset() can be performed atomically.

@@ -175,7 +175,7 @@ LookupKey::LookupKey(const Slice& _user_key, SequenceNumber s) {
     dst = new char[needed];
   }
   start_ = dst;
-  // NOTE: We don't support users keys of more than 2GB :)
+  // NOTE: We don't support users keys of more than 2GB :) id:19
   dst = EncodeVarint32(dst, static_cast<uint32_t>(usize + 8));
   kstart_ = dst;
   memcpy(dst, _user_key.data(), usize);

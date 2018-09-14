@@ -1053,7 +1053,7 @@ SuperVersion* ColumnFamilyData::GetThreadLocalSuperVersion(
     if (sv && sv->Unref()) {
       RecordTick(ioptions_.statistics, NUMBER_SUPERVERSION_CLEANUPS);
       db_mutex->Lock();
-      // NOTE: underlying resources held by superversion (sst files) might
+      // NOTE: underlying resources held by superversion (sst files) might id:105
       // not be released until the next background job.
       sv->Cleanup();
       sv_to_delete = sv;

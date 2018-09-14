@@ -20,7 +20,7 @@ public class WriteOptions extends RocksObject {
 
   }
 
-  // TODO(AR) consider ownership
+  // TODO (AR) consider ownership id:222
   WriteOptions(final long nativeHandle) {
     super(nativeHandle);
     disOwnNativeHandle();
@@ -29,7 +29,7 @@ public class WriteOptions extends RocksObject {
   /**
    * Copy constructor for WriteOptions.
    *
-   * NOTE: This does a shallow copy, which means comparator, merge_operator, compaction_filter,
+   * NOTE: This does a shallow copy, which means comparator, merge_operator, compaction_filter, id:231
    * compaction_filter_factory and other pointers will be cloned!
    *
    * @param other The ColumnFamilyOptions to copy.

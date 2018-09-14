@@ -141,7 +141,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::PutCF(uint32_t column_family_id,
   };
   auto status = WriteBatchHandlerJniCallback::kv_op(key, value, put);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:214
   } else {
     return rocksdb::Status(*status);
   }
@@ -172,7 +172,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MergeCF(uint32_t column_family_id,
   };
   auto status = WriteBatchHandlerJniCallback::kv_op(key, value, merge);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:146
   } else {
     return rocksdb::Status(*status);
   }
@@ -201,7 +201,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::DeleteCF(uint32_t column_family_id
   };
   auto status = WriteBatchHandlerJniCallback::k_op(key, remove);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:165
   } else {
     return rocksdb::Status(*status);
   }
@@ -228,7 +228,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::SingleDeleteCF(uint32_t column_fam
   };
   auto status = WriteBatchHandlerJniCallback::k_op(key, singleDelete);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:239
   } else {
     return rocksdb::Status(*status);
   }
@@ -257,7 +257,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::DeleteRangeCF(uint32_t column_fami
   };
   auto status = WriteBatchHandlerJniCallback::kv_op(beginKey, endKey, deleteRange);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:192
   } else {
     return rocksdb::Status(*status);
   }
@@ -299,7 +299,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::PutBlobIndexCF(uint32_t column_fam
   };
   auto status = WriteBatchHandlerJniCallback::kv_op(key, value, putBlobIndex);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:215
   } else {
     return rocksdb::Status(*status);
   }
@@ -321,7 +321,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MarkBeginPrepare(bool unprepare) {
     if (status == nullptr) {
       // unkown status or exception occurred extracting status
       m_env->ExceptionDescribe();
-      return rocksdb::Status::OK();  // TODO(AR) probably need a better error code here
+      return rocksdb::Status::OK();  // TODO (AR) probably need a better error code here id:147
 
     } else {
       m_env->ExceptionClear();  // clear the exception, as we have extracted the status
@@ -342,7 +342,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MarkEndPrepare(const Slice& xid) {
   };
   auto status = WriteBatchHandlerJniCallback::k_op(xid, markEndPrepare);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:166
   } else {
     return rocksdb::Status(*status);
   }
@@ -359,7 +359,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MarkNoop(bool empty_batch) {
     if (status == nullptr) {
       // unkown status or exception occurred extracting status
       m_env->ExceptionDescribe();
-      return rocksdb::Status::OK();  // TODO(AR) probably need a better error code here
+      return rocksdb::Status::OK();  // TODO (AR) probably need a better error code here id:240
 
     } else {
       m_env->ExceptionClear();  // clear the exception, as we have extracted the status
@@ -380,7 +380,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MarkRollback(const Slice& xid) {
   };
   auto status = WriteBatchHandlerJniCallback::k_op(xid, markRollback);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:193
   } else {
     return rocksdb::Status(*status);
   }
@@ -396,7 +396,7 @@ rocksdb::Status WriteBatchHandlerJniCallback::MarkCommit(const Slice& xid) {
   };
   auto status = WriteBatchHandlerJniCallback::k_op(xid, markCommit);
   if(status == nullptr) {
-    return rocksdb::Status::OK();   // TODO(AR) what to do if there is an Exception but we don't know the rocksdb::Status?
+    return rocksdb::Status::OK();   // TODO (AR) what to do if there is an Exception but we don't know the rocksdb::Status? id:216
   } else {
     return rocksdb::Status(*status);
   }

@@ -230,7 +230,7 @@ bool GetContext::SaveValue(const ParsedInternalKey& parsed_key,
       case kTypeDeletion:
       case kTypeSingleDeletion:
       case kTypeRangeDeletion:
-        // TODO(noetzli): Verify correctness once merge of single-deletes
+        // TODO (noetzli): Verify correctness once merge of single-deletes id:265
         // is supported
         assert(state_ == kNotFound || state_ == kMerge);
         if (kNotFound == state_) {

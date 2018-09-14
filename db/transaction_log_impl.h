@@ -102,7 +102,7 @@ class TransactionLogIteratorImpl : public TransactionLogIterator {
   SequenceNumber currentBatchSeq_; // sequence number at start of current batch
   SequenceNumber currentLastSeq_; // last sequence in the current batch
   // Used only to get latest seq. num
-  // TODO(icanadi) can this be just a callback?
+  // TODO (icanadi) can this be just a callback? id:122
   VersionSet const* const versions_;
   const bool seq_per_batch_;
   // Reads from transaction log only if the writebatch record has been written

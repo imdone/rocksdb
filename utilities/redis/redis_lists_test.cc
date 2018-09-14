@@ -10,7 +10,7 @@
  *        Manual/Interactive user testing: "./redis_test -m"
  *        Manual user testing + restart database: "./redis_test -m -d"
  *
- * TODO:  Add LARGE random test cases to verify efficiency and scalability
+ * TODO: Add LARGE random test cases to verify efficiency and scalability id:406
  *
  * @author Deon Nicholas (dnicholas@fb.com)
  */
@@ -761,7 +761,7 @@ int manual_redis_test(bool destructive){
                    RedisListsTest::options,
                    destructive);
 
-  // TODO: Right now, please use spaces to separate each word.
+  // TODO: Right now, please use spaces to separate each word. id:344
   //  In actual redis, you can use quotes to specify compound values
   //  Example: RPUSH mylist "this is a compound value"
 

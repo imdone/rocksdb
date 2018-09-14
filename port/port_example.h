@@ -17,7 +17,7 @@
 namespace rocksdb {
 namespace port {
 
-// TODO(jorlow): Many of these belong more in the environment class rather than
+// TODO (jorlow): Many of these belong more in the environment class rather than id:204
 //               here. We should try moving them and see if it affects perf.
 
 // The following boolean constant must be true on a little-endian machine

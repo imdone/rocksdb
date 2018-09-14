@@ -258,7 +258,7 @@ class PartitionIndexReader : public IndexReader, public Cleanable {
           false, true, /* prefix_extractor */ nullptr, kIsIndex,
           index_key_includes_seq_, index_value_is_full_);
     }
-    // TODO(myabandeh): Update TwoLevelIterator to be able to make use of
+    // TODO (myabandeh): Update TwoLevelIterator to be able to make use of id:237
     // on-stack BlockIter while the state is on heap. Currentlly it assumes
     // the first level iter is always on heap and will attempt to delete it
     // in its destructor.
@@ -310,7 +310,7 @@ class PartitionIndexReader : public IndexReader, public Cleanable {
         compression_dict = rep->compression_dict_block->data;
       }
       const bool is_index = true;
-      // TODO: Support counter batch update for partitioned index and
+      // TODO: Support counter batch update for partitioned index and id:179
       // filter blocks
       s = table_->MaybeLoadDataBlockToCache(
           prefetch_buffer.get(), rep, ro, handle, compression_dict, &block,
@@ -346,7 +346,7 @@ class PartitionIndexReader : public IndexReader, public Cleanable {
 #else
     usage += sizeof(*this);
 #endif  // ROCKSDB_MALLOC_USABLE_SIZE
-    // TODO(myabandeh): more accurate estimate of partition_map_ mem usage
+    // TODO (myabandeh): more accurate estimate of partition_map_ mem usage id:253
     return usage;
   }
 
@@ -484,7 +484,7 @@ class HashIndexReader : public IndexReader {
     s = FindMetaBlock(meta_index_iter, kHashIndexPrefixesBlock,
                       &prefixes_handle);
     if (!s.ok()) {
-      // TODO: log error
+      // TODO: log error id:206
       return Status::OK();
     }
 
@@ -493,7 +493,7 @@ class HashIndexReader : public IndexReader {
     s = FindMetaBlock(meta_index_iter, kHashIndexPrefixesMetadataBlock,
                       &prefixes_meta_handle);
     if (!s.ok()) {
-      // TODO: log error
+      // TODO: log error id:289
       return Status::OK();
     }
 
@@ -515,14 +515,14 @@ class HashIndexReader : public IndexReader {
         dummy_comp_dict /*compression dict*/, cache_options);
     s = prefixes_meta_block_fetcher.ReadBlockContents();
     if (!s.ok()) {
-      // TODO: log error
+      // TODO: log error id:262
       return Status::OK();
     }
 
     BlockPrefixIndex* prefix_index = nullptr;
     s = BlockPrefixIndex::Create(hash_key_extractor, prefixes_contents.data,
                                  prefixes_meta_contents.data, &prefix_index);
-    // TODO: log error
+    // TODO: log error id:180
     if (s.ok()) {
       new_index_reader->prefix_index_.reset(prefix_index);
     }
@@ -765,7 +765,7 @@ Status BlockBasedTable::Open(const ImmutableCFOptions& ioptions,
   if (tail_prefetch_size == 0) {
     // Before read footer, readahead backwards to prefetch data. Do more
     // readahead if we're going to read index/filter.
-    // TODO: This may incorrectly select small readahead in case partitioned
+    // TODO: This may incorrectly select small readahead in case partitioned id:254
     // index/filter is enabled and top-level partition pinning is enabled.
     // That's because we need to issue readahead before we read the properties,
     // at which point we don't yet know the index type.
@@ -783,7 +783,7 @@ Status BlockBasedTable::Open(const ImmutableCFOptions& ioptions,
   TEST_SYNC_POINT_CALLBACK("BlockBasedTable::Open::TailPrefetchLen",
                            &tail_prefetch_size);
   Status s;
-  // TODO should not have this special logic in the future.
+  // TODO should not have this special logic in the future. id:207
   if (!file->use_direct_io()) {
     prefetch_buffer.reset(new FilePrefetchBuffer(nullptr, 0, 0, false, true));
     s = file->Prefetch(prefetch_off, prefetch_len);
@@ -914,7 +914,7 @@ Status BlockBasedTable::Open(const ImmutableCFOptions& ioptions,
         "Error when seeking to compression dictionary block from file: %s",
         s.ToString().c_str());
   } else if (found_compression_dict && !compression_dict_handle.IsNull()) {
-    // TODO(andrewkr): Add to block cache if cache_index_and_filter_blocks is
+    // TODO (andrewkr): Add to block cache if cache_index_and_filter_blocks is id:290
     // true.
     std::unique_ptr<BlockContents> compression_dict_cont{new BlockContents()};
     PersistentCacheOptions cache_options;
@@ -1142,7 +1142,7 @@ Status BlockBasedTable::ReadMetaBlock(Rep* rep,
                                       FilePrefetchBuffer* prefetch_buffer,
                                       std::unique_ptr<Block>* meta_block,
                                       std::unique_ptr<InternalIterator>* iter) {
-  // TODO(sanjay): Skip this if footer.metaindex_handle() size indicates
+  // TODO (sanjay): Skip this if footer.metaindex_handle() size indicates id:263
   // it is an empty block.
   std::unique_ptr<Block> meta;
   Status s = ReadBlockFromFile(
@@ -1390,7 +1390,7 @@ FilterBlockReader* BlockBasedTable::ReadFilter(
     const bool is_a_filter_partition,
     const SliceTransform* prefix_extractor) const {
   auto& rep = rep_;
-  // TODO: We might want to unify with ReadBlockFromFile() if we start
+  // TODO: We might want to unify with ReadBlockFromFile() if we start id:181
   // requiring checksum verification in Table::Open.
   if (rep->filter_type == Rep::FilterType::kNoFilter) {
     return nullptr;
@@ -2159,7 +2159,7 @@ void BlockBasedTableIterator<TBlockIter, TValue>::InitDataBlock() {
 template <class TBlockIter, typename TValue>
 void BlockBasedTableIterator<TBlockIter, TValue>::FindKeyForward() {
   assert(!is_out_of_bound_);
-  // TODO the while loop inherits from two-level-iterator. We don't know
+  // TODO the while loop inherits from two-level-iterator. We don't know id:255
   // whether a block can be empty so it can be replaced by an "if".
   while (!block_iter_.Valid()) {
     if (!block_iter_.status().ok()) {
@@ -2355,7 +2355,7 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
 
       if (not_exist_in_filter) {
         // Not found
-        // TODO: think about interaction with Merge. If a user key cannot
+        // TODO: think about interaction with Merge. If a user key cannot id:208
         // cross one data block, we should be fine.
         RecordTick(rep_->ioptions.statistics, BLOOM_FILTER_USEFUL);
         break;

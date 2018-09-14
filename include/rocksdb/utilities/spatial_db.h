@@ -16,7 +16,7 @@
 namespace rocksdb {
 namespace spatial {
 
-// NOTE: SpatialDB is experimental and we might change its API without warning.
+// NOTE: SpatialDB is experimental and we might change its API without warning. id:155
 // Please talk to us before developing against SpatialDB API.
 //
 // SpatialDB is a support for spatial indexes built on top of RocksDB.

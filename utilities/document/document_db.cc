@@ -31,7 +31,7 @@ namespace {
 // < 0   <=>  lhs < rhs
 // == 0  <=>  lhs == rhs
 // > 0   <=>  lhs == rhs
-// TODO(icanadi) move this to JSONDocument?
+// TODO (icanadi) move this to JSONDocument? id:285
 int DocumentCompare(const JSONDocument& lhs, const JSONDocument& rhs) {
   assert(lhs.IsObject() == false && rhs.IsObject() == false &&
          lhs.type() == rhs.type());
@@ -158,7 +158,7 @@ Filter* Filter::ParseFilter(const JSONDocument& filter) {
         } else if (condition.first == "$lte") {
           interval.UpdateUpperBound(condition.second, true);
         } else {
-          // TODO(icanadi) more logical operators
+          // TODO (icanadi) more logical operators id:338
           return nullptr;
         }
       }
@@ -194,7 +194,7 @@ bool Filter::SatisfiesFilter(const JSONDocument& document) const {
     if (!interval.second.upper_bound.IsNull()) {
       if (value.type() != interval.second.upper_bound.type()) {
         // no cross-type queries yet
-        // TODO(icanadi) do this at least for numbers!
+        // TODO (icanadi) do this at least for numbers! id:391
         return false;
       }
       int cmp = DocumentCompare(interval.second.upper_bound, value);
@@ -300,7 +300,7 @@ enum JSONPrimitivesEncoding : char {
 // encodes simple JSON members (meaning string, integer, etc)
 // the end result of this will be lexicographically compared to each other
 bool EncodeJSONPrimitive(const JSONDocument& json, std::string* dst) {
-  // TODO(icanadi) revise this at some point, have a custom comparator
+  // TODO (icanadi) revise this at some point, have a custom comparator id:368
   switch (json.type()) {
     case JSONDocument::kNull:
       dst->push_back(kNull);
@@ -448,10 +448,10 @@ class SimpleSortedIndex : public Index {
       std::string encoded_upper_bound;
       if (!EncodeJSONPrimitive(interval->upper_bound, &encoded_upper_bound)) {
         // uhm...?
-        // TODO(icanadi) store encoded upper and lower bounds in Filter*?
+        // TODO (icanadi) store encoded upper and lower bounds in Filter*? id:313
         assert(false);
       }
-      // TODO(icanadi) we need to somehow decode this and use DocumentCompare()
+      // TODO (icanadi) we need to somehow decode this and use DocumentCompare() id:286
       int compare = secondary_key.compare(Slice(encoded_upper_bound));
       // if (current key is bigger than upper bound) OR (current key is equal to
       // upper bound, but inclusive is false) THEN stop looking. otherwise,
@@ -469,10 +469,10 @@ class SimpleSortedIndex : public Index {
       std::string encoded_lower_bound;
       if (!EncodeJSONPrimitive(interval->lower_bound, &encoded_lower_bound)) {
         // uhm...?
-        // TODO(icanadi) store encoded upper and lower bounds in Filter*?
+        // TODO (icanadi) store encoded upper and lower bounds in Filter*? id:339
         assert(false);
       }
-      // TODO(icanadi) we need to somehow decode this and use DocumentCompare()
+      // TODO (icanadi) we need to somehow decode this and use DocumentCompare() id:392
       int compare = secondary_key.compare(Slice(encoded_lower_bound));
       // if (current key is smaller than lower bound) OR (current key is equal
       // to lower bound, but inclusive is false) THEN stop looking. otherwise,
@@ -874,7 +874,7 @@ class DocumentDBImpl : public DocumentDB {
         return Status::Corruption("Document corruption");
       }
 
-      // TODO(icanadi) Instead of doing this, just get primary key encoding from
+      // TODO (icanadi) Instead of doing this, just get primary key encoding from id:369
       // cursor, as it already has this information
       std::string primary_key_encoded;
       if (!EncodeJSONPrimitive(primary_key, &primary_key_encoded)) {
@@ -918,7 +918,7 @@ class DocumentDBImpl : public DocumentDB {
       if (!new_document.IsObject()) {
         return Status::Corruption("Document corruption");
       }
-      // TODO(icanadi) Make this nicer, something like class Filter
+      // TODO (icanadi) Make this nicer, something like class Filter id:314
       for (const auto& update : updates.Items()) {
         if (update.first == "$set") {
           JSONDocumentBuilder builder;
@@ -951,12 +951,12 @@ class DocumentDBImpl : public DocumentDB {
           new_document = builder.GetJSONDocument();
           assert(new_document.IsOwner());
         } else {
-          // TODO(icanadi) more commands
+          // TODO (icanadi) more commands id:287
           return Status::InvalidArgument("Can't understand update command");
         }
       }
 
-      // TODO(icanadi) reuse some of this code
+      // TODO (icanadi) reuse some of this code id:340
       if (!new_document.Contains(kPrimaryKey)) {
         return Status::Corruption("Corrupted document -- primary key missing");
       }
@@ -1014,7 +1014,7 @@ class DocumentDBImpl : public DocumentDB {
           Status::InvalidArgument("Query has to be an array"));
     }
 
-    // TODO(icanadi) support index "_id"
+    // TODO (icanadi) support index "_id" id:393
     for (size_t i = 0; i < query.Count(); ++i) {
       const auto& command_doc = query[i];
       if (command_doc.Count() != 1) {

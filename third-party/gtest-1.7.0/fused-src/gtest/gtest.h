@@ -648,7 +648,7 @@ struct _RTL_CRITICAL_SECTION;
 #ifndef GTEST_HAS_STD_WSTRING
 // The user didn't tell us whether ::std::wstring is available, so we need
 // to figure it out.
-// TODO(wan@google.com): uses autoconf to detect whether ::std::wstring
+// TODO (wan@google.com): uses autoconf to detect whether :: std::wstring id:326
 //   is available.
 
 // Cygwin 1.7 and below doesn't support ::std::wstring.
@@ -2326,7 +2326,7 @@ class GTEST_API_ RE {
   // PartialMatch(str, re) returns true iff regular expression re
   // matches a substring of str (including str itself).
   //
-  // TODO(wan@google.com): make FullMatch() and PartialMatch() work
+  // TODO (wan@google.com): make FullMatch() and PartialMatch() work id:361
   // when str contains NUL characters.
   static bool FullMatch(const ::std::string& str, const RE& re) {
     return FullMatch(str.c_str(), re);
@@ -2353,7 +2353,7 @@ class GTEST_API_ RE {
   void Init(const char* regex);
 
   // We use a const char* instead of an std::string, as Google Test used to be
-  // used where std::string is not available.  TODO(wan@google.com): change to
+  // used where std::string is not available.  TODO (wan@google.com): change to id:352
   // std::string.
   const char* pattern_;
   bool is_valid_;
@@ -3577,7 +3577,7 @@ typedef TypeWithSize<8>::Int TimeInMillis;  // Represents time in milliseconds.
 // Parses 'str' for a 32-bit signed integer.  If successful, writes the result
 // to *value and returns true; otherwise leaves *value unchanged and returns
 // false.
-// TODO(chandlerc): Find a better way to refactor flag and environment parsing
+// TODO (chandlerc): Find a better way to refactor flag and environment parsing id:301
 // out of both gtest-port.cc and gtest.cc to avoid exporting this utility
 // function.
 bool ParseInt32(const Message& src_text, const char* str, Int32* value);
@@ -9171,7 +9171,7 @@ GTEST_API_ bool InDeathTestChild();
 //   is rarely a problem as people usually don't put the test binary
 //   directory in PATH.
 //
-// TODO(wan@google.com): make thread-safe death tests search the PATH.
+// TODO (wan@google.com): make thread-safe death tests search the PATH. id:274
 
 // Asserts that a given statement causes the program to exit, with an
 // integer exit status that satisfies predicate, and emitting error output
@@ -9599,7 +9599,7 @@ TEST_P(DerivedTest, DoesBlah) {
 //       raw pointer (e.g. via get()) concurrently, and
 //     - it's safe to write to two linked_ptrs that point to the same
 //       shared object concurrently.
-// TODO(wan@google.com): rename this to safe_linked_ptr to avoid
+// TODO (wan@google.com): rename this to safe_linked_ptr to avoid id:327
 // confusion with normal linked_ptr.
 
 #ifndef GTEST_INCLUDE_GTEST_INTERNAL_GTEST_LINKED_PTR_H_
@@ -10403,7 +10403,7 @@ void UniversalPrintArray(const T* begin, size_t len, ::std::ostream* os) {
     // If the array has more than kThreshold elements, we'll have to
     // omit some details by printing only the first and the last
     // kChunkSize elements.
-    // TODO(wan@google.com): let the user control the threshold using a flag.
+    // TODO (wan@google.com): let the user control the threshold using a flag. id:380
     if (len <= kThreshold) {
       PrintRawArrayTo(begin, len, os);
     } else {
@@ -18332,7 +18332,7 @@ class GTEST_API_ AssertionResult {
   const char* message() const {
     return message_.get() != NULL ?  message_->c_str() : "";
   }
-  // TODO(vladl@google.com): Remove this after making sure no clients use it.
+  // TODO (vladl@google.com): Remove this after making sure no clients use it. id:353
   // Deprecated; please use message() instead.
   const char* failure_message() const { return message(); }
 
@@ -18630,7 +18630,7 @@ class GTEST_API_ TestResult {
 
   // Adds a failure if the key is a reserved attribute of Google Test
   // testcase tags.  Returns true if the property is valid.
-  // TODO(russr): Validate attribute names are legal and human readable.
+  // TODO (russr): Validate attribute names are legal and human readable. id:302
   static bool ValidateTestProperty(const std::string& xml_element,
                                    const TestProperty& test_property);
 

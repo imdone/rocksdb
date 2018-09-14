@@ -4569,7 +4569,7 @@ class JniUtil {
      * Helper for operations on a key and value
      * for example WriteBatch->Put
      *
-     * TODO(AR) could be used for RocksDB->Put etc.
+     * TODO (AR) could be used for RocksDB->Put etc. id:142
      */
     static std::unique_ptr<rocksdb::Status> kv_op(
         std::function<rocksdb::Status(rocksdb::Slice, rocksdb::Slice)> op,
@@ -4611,7 +4611,7 @@ class JniUtil {
      * Helper for operations on a key
      * for example WriteBatch->Delete
      *
-     * TODO(AR) could be used for RocksDB->Delete etc.
+     * TODO (AR) could be used for RocksDB->Delete etc. id:101
      */
     static std::unique_ptr<rocksdb::Status> k_op(
         std::function<rocksdb::Status(rocksdb::Slice)> op,

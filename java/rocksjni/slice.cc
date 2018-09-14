@@ -35,7 +35,7 @@ jlong Java_org_rocksdb_AbstractSlice_createNewSliceFromString(JNIEnv* env,
 
   const size_t len = strlen(str);
 
-  // NOTE: buf will be deleted in the
+  // NOTE: buf will be deleted in the id:143
   // Java_org_rocksdb_Slice_disposeInternalBuf or
   // or Java_org_rocksdb_DirectSlice_disposeInternalBuf methods
   char* buf = new char[len + 1];
@@ -132,7 +132,7 @@ jlong Java_org_rocksdb_Slice_createNewSlice0(JNIEnv* env, jclass /*jcls*/,
   const jsize dataSize = env->GetArrayLength(data);
   const int len = dataSize - offset;
 
-  // NOTE: buf will be deleted in the Java_org_rocksdb_Slice_disposeInternalBuf
+  // NOTE: buf will be deleted in the Java_org_rocksdb_Slice_disposeInternalBuf id:102
   // method
   jbyte* buf = new jbyte[len];
   env->GetByteArrayRegion(data, offset, len, buf);
@@ -159,7 +159,7 @@ jlong Java_org_rocksdb_Slice_createNewSlice1(JNIEnv* env, jclass /*jcls*/,
   }
   const int len = env->GetArrayLength(data) + 1;
 
-  // NOTE: buf will be deleted in the Java_org_rocksdb_Slice_disposeInternalBuf
+  // NOTE: buf will be deleted in the Java_org_rocksdb_Slice_disposeInternalBuf id:160
   // method
   char* buf = new char[len];
   memcpy(buf, ptrData, len - 1);

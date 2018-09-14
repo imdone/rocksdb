@@ -29,7 +29,7 @@ namespace fbson {
 
 namespace rocksdb {
 
-// NOTE: none of this is thread-safe
+// NOTE: none of this is thread-safe id:97
 class JSONDocument {
  public:
   // return nullptr on parse failure

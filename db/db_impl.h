@@ -269,7 +269,7 @@ class DBImpl : public DB {
   // Obtains the meta data of the specified column family of the DB.
   // Status::NotFound() will be returned if the current DB does not have
   // any column family match the specified name.
-  // TODO(yhchiang): output parameter is placed in the end in this codebase.
+  // TODO (yhchiang): output parameter is placed in the end in this codebase. id:10
   virtual void GetColumnFamilyMetaData(
       ColumnFamilyHandle* column_family,
       ColumnFamilyMetaData* metadata) override;
@@ -321,7 +321,7 @@ class DBImpl : public DB {
   //
   // Returns OK or NotFound on success,
   // other status on unexpected error.
-  // TODO(andrewkr): this API need to be aware of range deletion operations
+  // TODO (andrewkr): this API need to be aware of range deletion operations id:28
   Status GetLatestSequenceForKey(SuperVersion* sv, const Slice& key,
                                  bool cache_only, SequenceNumber* seq,
                                  bool* found_record_for_key,
@@ -577,7 +577,7 @@ class DBImpl : public DB {
 
     struct BatchInfo {
       uint64_t log_number_;
-      // TODO(lth): For unprepared, the memory usage here can be big for
+      // TODO (lth): For unprepared, the memory usage here can be big for id:34
       // unprepared transactions. This is only useful for rollbacks, and we
       // can in theory just keep keyset for that.
       WriteBatch* batch_;
@@ -1289,7 +1289,7 @@ class DBImpl : public DB {
   // A column family is inserted into compaction_queue_ when it satisfied
   // condition cfd->NeedsCompaction()
   // Column families in this list are all Ref()-erenced
-  // TODO(icanadi) Provide some kind of ReferencedColumnFamily class that will
+  // TODO (icanadi) Provide some kind of ReferencedColumnFamily class that will id:110
   // do RAII on ColumnFamilyData
   // Column families are in this queue when they need to be flushed or
   // compacted. Consumers of these queues are flush and compaction threads. When

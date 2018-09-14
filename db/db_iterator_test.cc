@@ -659,7 +659,7 @@ TEST_P(DBIteratorTest, IterMultiWithDelete) {
     iter->Seek("kc");
     ASSERT_EQ(IterStatus(iter), "kc->vc");
     if (!CurrentOptions().merge_operator) {
-      // TODO: merge operator does not support backward iteration yet
+      // TODO: merge operator does not support backward iteration yet id:16
       if (kPlainTableAllBytesPrefix != option_config_ &&
           kBlockBasedTableWithWholeKeyHashIndex != option_config_ &&
           kHashLinkList != option_config_ &&
@@ -726,7 +726,7 @@ TEST_P(DBIteratorTest, IterWithSnapshot) {
     iter->Seek("key5");
     ASSERT_EQ(IterStatus(iter), "key5->val5");
     if (!CurrentOptions().merge_operator) {
-      // TODO: merge operator does not support backward iteration yet
+      // TODO: merge operator does not support backward iteration yet id:82
       if (kPlainTableAllBytesPrefix != option_config_ &&
           kBlockBasedTableWithWholeKeyHashIndex != option_config_ &&
           kHashLinkList != option_config_ && kHashSkipList != option_config_) {
@@ -745,7 +745,7 @@ TEST_P(DBIteratorTest, IterWithSnapshot) {
     }
 
     if (!CurrentOptions().merge_operator) {
-      // TODO(gzh): merge operator does not support backward iteration yet
+      // TODO (gzh): merge operator does not support backward iteration yet id:40
       if (kPlainTableAllBytesPrefix != option_config_ &&
           kBlockBasedTableWithWholeKeyHashIndex != option_config_ &&
           kHashLinkList != option_config_ && kHashSkipList != option_config_) {
@@ -1068,7 +1068,7 @@ TEST_P(DBIteratorTest, DBIteratorBoundOptimizationTest) {
   ASSERT_FALSE(iter->Valid());
   ASSERT_EQ(upper_bound_hits, 1);
 }
-// TODO(3.13): fix the issue of Seek() + Prev() which might not necessary
+// TODO (3.13): fix the issue of Seek() + Prev() which might not necessary id:116
 //             return the biggest key which is smaller than the seek key.
 TEST_P(DBIteratorTest, PrevAfterAndNextAfterMerge) {
   Options options;

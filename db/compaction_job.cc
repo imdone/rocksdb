@@ -993,7 +993,7 @@ void CompactionJob::ProcessKeyValueCompaction(SubcompactionState* sub_compact) {
     // time to close it: (1) the current key should be this file's last key, (2)
     // the next key should not be in this file.
     //
-    // TODO(aekmekji): determine if file should be closed earlier than this
+    // TODO (aekmekji): determine if file should be closed earlier than this id:7
     // during subcompactions (i.e. if output size, estimated by input size, is
     // going to be 1.2MB and max_output_file_size = 1MB, prefer to have 0.6MB
     // and 0.6MB instead of 1MB and 0.2MB)
@@ -1220,7 +1220,7 @@ Status CompactionJob::FinishCompactionOutputFile(
       }
 
       if (bottommost_level_ && tombstone.seq_ <= earliest_snapshot) {
-        // TODO(andrewkr): tombstones that span multiple output files are
+        // TODO (andrewkr): tombstones that span multiple output files are id:25
         // counted for each compaction output file, so lots of double counting.
         range_del_out_stats->num_range_del_drop_obsolete++;
         range_del_out_stats->num_record_drop_obsolete++;
@@ -1347,7 +1347,7 @@ Status CompactionJob::FinishCompactionOutputFile(
                       meta->fd.GetNumber(), meta->fd.GetPathId());
     sfm->OnAddFile(fn);
     if (sfm->IsMaxAllowedSpaceReached()) {
-      // TODO(ajkr): should we return OK() if max space was reached by the final
+      // TODO (ajkr): should we return OK() if max space was reached by the final id:31
       // compaction output file (similarly to how flush works when full)?
       s = Status::SpaceLimit("Max allowed space was reached");
       TEST_SYNC_POINT(
