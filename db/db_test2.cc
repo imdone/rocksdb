@@ -2382,7 +2382,7 @@ TEST_F(DBTest2, ReadCallbackTest) {
   // This test assumes that the seq start with 1 and increased by 1 after each
   // write batch of size 1. If that behavior changes, the test needs to be
   // updated as well.
-  // TODO(myabandeh): update this test to use the seq number that is returned by
+  // TODO (myabandeh): update this test to use the seq number that is returned by id:42
   // the DB instead of assuming what seq the DB used.
   int i = 1;
   for (; i < 10; i++) {

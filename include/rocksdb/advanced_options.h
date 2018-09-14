@@ -570,7 +570,7 @@ struct AdvancedColumnFamilyOptions {
   // For now, this flag allows us to not store filters for the last level i.e
   // the largest level which contains data of the LSM store. For keys which
   // are hits, the filters in this level are not useful because we will search
-  // for the data anyway. NOTE: the filters in other levels are still useful
+  // for the data anyway. NOTE: the filters in other levels are still useful id:69
   // even for key hit because they tell us whether to look in that level or go
   // to the higher level.
   //

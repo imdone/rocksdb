@@ -47,7 +47,7 @@ class TransactionNotifier {
 //
 // See examples/transaction_example.cc for some simple examples.
 //
-// TODO(agiardullo): Not yet implemented
+// TODO (agiardullo): Not yet implemented id:184
 //  -PerfContext statistics
 //  -Support for using Transactions with DBWithTTL
 class Transaction {
@@ -466,7 +466,7 @@ class Transaction {
   TransactionState GetState() const { return txn_state_; }
   void SetState(TransactionState state) { txn_state_ = state; }
 
-  // NOTE: Experimental feature
+  // NOTE: Experimental feature id:73
   // The globally unique id with which the transaction is identified. This id
   // might or might not be set depending on the implementation. Similarly the
   // implementation decides the point in lifetime of a transaction at which it

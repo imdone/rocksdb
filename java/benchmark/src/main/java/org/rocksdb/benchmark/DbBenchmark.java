@@ -60,7 +60,7 @@ class Stats {
   StringBuilder message_;
   boolean excludeFromMerge_;
 
-  // TODO(yhchiang): use the following arguments:
+  // TODO (yhchiang): use the following arguments: id:140
   //   (Long)Flag.stats_interval
   //   (Integer)Flag.stats_per_interval
 
@@ -173,7 +173,7 @@ public class DbBenchmark {
   }
 
   abstract class BenchmarkTask implements Callable<Stats> {
-    // TODO(yhchiang): use (Integer)Flag.perf_level.
+    // TODO (yhchiang): use (Integer)Flag.perf_level. id:99
     public BenchmarkTask(
         int tid, long randSeed, long numEntries, long keyRange) {
       tid_ = tid;
@@ -596,7 +596,7 @@ public class DbBenchmark {
           (AbstractComparator)flags_.get(Flag.java_comparator));
     }
 
-    /* TODO(yhchiang): enable the following parameters
+    /* TODO (yhchiang): enable the following parameters id:157
     options.setCompressionType((String)flags_.get(Flag.compression_type));
     options.setCompressionLevel((Integer)flags_.get(Flag.compression_level));
     options.setMinLevelToCompress((Integer)flags_.get(Flag.min_level_to_compress));
@@ -612,8 +612,8 @@ public class DbBenchmark {
         (Integer)flags_.get(Flag.universal_max_size_amplification_percent));
     options.setUniversalCompressionSizePercent(
         (Integer)flags_.get(Flag.universal_compression_size_percent));
-    // TODO(yhchiang): add RocksDB.openForReadOnly() to enable Flag.readonly
-    // TODO(yhchiang): enable Flag.merge_operator by switch
+    // TODO (yhchiang): add RocksDB.openForReadOnly() to enable Flag.readonly id:186
+    // TODO (yhchiang): enable Flag.merge_operator by switch id:75
     options.setAccessHintOnCompactionStart(
         (String)flags_.get(Flag.compaction_fadvice));
     // available values of fadvice are "NONE", "NORMAL", "SEQUENTIAL", "WILLNEED" for fadvice
@@ -841,7 +841,7 @@ public class DbBenchmark {
     if (db_ != null) {
       db_.close();
     }
-    // TODO(yhchiang): develop our own FileUtil
+    // TODO (yhchiang): develop our own FileUtil id:141
     // FileUtil.deleteDir(databaseDir_);
   }
 
@@ -1125,7 +1125,7 @@ public class DbBenchmark {
         return Integer.parseInt(value);
       }
     },
-    /* TODO(yhchiang): enable the following
+    /* TODO (yhchiang): enable the following id:100
     compaction_style((int32_t) defaultOptions_.compactionStyle(),
         "style of compaction: level-based vs universal.") {
       @Override public Object parseValue(String value) {
@@ -1401,7 +1401,7 @@ public class DbBenchmark {
         return Long.parseLong(value);
       }
     },
-    /* TODO(yhchiang): enable the following
+    /* TODO (yhchiang): enable the following id:158
     direct_reads(rocksdb::EnvOptions().use_direct_reads,
         "Allow direct I/O reads.") {
       @Override public Object parseValue(String value) {

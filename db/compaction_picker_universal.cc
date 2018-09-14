@@ -420,7 +420,7 @@ uint32_t UniversalCompactionPicker::GetPathId(
   // compacted to (1, 1, 2, 4, 8, 16), all those files can be stored in or
   // before the path we chose.
   //
-  // TODO(sdong): now the case of multiple column families is not
+  // TODO (sdong): now the case of multiple column families is not id:108
   // considered in this algorithm. So the target size can be violated in
   // that case. We need to improve it.
   uint64_t accumulated_size = 0;

@@ -262,7 +262,7 @@ Status PessimisticTransaction::Commit() {
   } else if (txn_state_ == STARTED) {
     // expiration and lock stealing is not a concern
     commit_without_prepare = true;
-    // TODO(myabandeh): what if the user mistakenly forgets prepare? We should
+    // TODO (myabandeh): what if the user mistakenly forgets prepare? We should id:397
     // add an option so that the user explictly express the intention of
     // skipping the prepare phase.
   }
@@ -535,7 +535,7 @@ Status PessimisticTransaction::TryLock(ColumnFamilyHandle* column_family,
   // we still need to take a lock to make sure we do not cause a conflict with
   // some other write.  However, we do not need to check if there have been
   // any writes since this transaction's snapshot.
-  // TODO(agiardullo): could optimize by supporting shared txn locks in the
+  // TODO (agiardullo): could optimize by supporting shared txn locks in the id:374
   // future
   if (skip_validate || snapshot_ == nullptr) {
     // Need to remember the earliest sequence number that we know that this

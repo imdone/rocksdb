@@ -104,7 +104,7 @@ class SstFileManager {
 //    chunk, ftruncate the file by this size each time, rather than dropping the
 //    whole file. 0 means to always delete the whole file. If the file has more
 //    than one linked names, the file will be deleted as a whole. Either way,
-//    `rate_bytes_per_sec` will be appreciated. NOTE that with this option,
+//    `rate_bytes_per_sec` will be appreciated. NOTE that with this option, id:136
 //    files already renamed as a trash may be partial, so users should not
 //    directly recover them without checking.
 extern SstFileManager* NewSstFileManager(

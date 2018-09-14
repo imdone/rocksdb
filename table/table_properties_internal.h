@@ -23,7 +23,7 @@ Status SeekToPropertiesBlock(InternalIterator* meta_iter, bool* is_found);
 Status SeekToCompressionDictBlock(InternalIterator* meta_iter, bool* is_found,
                           BlockHandle* block_handle);
 
-// TODO(andrewkr) should not put all meta block in table_properties.h/cc
+// TODO (andrewkr) should not put all meta block in table_properties.h/cc id:294
 Status SeekToRangeDelBlock(InternalIterator* meta_iter, bool* is_found,
                            BlockHandle* block_handle);
 

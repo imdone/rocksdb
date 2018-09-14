@@ -1208,7 +1208,7 @@ void Version::Get(const ReadOptions& read_options, const LookupKey& k,
         IsFilterSkipped(static_cast<int>(fp.GetHitFileLevel()),
                         fp.IsHitFileLastInLevel()),
         fp.GetCurrentLevel());
-    // TODO: examine the behavior for corrupted key
+    // TODO: examine the behavior for corrupted key id:64
     if (!status->ok()) {
       return;
     }
@@ -2617,7 +2617,7 @@ bool VersionStorageInfo::RangeMightExistAfterSortedRun(
     const Slice& smallest_key, const Slice& largest_key, int last_level,
     int last_l0_idx) {
   assert((last_l0_idx != -1) == (last_level == 0));
-  // TODO(ajkr): this preserves earlier behavior where we considered an L0 file
+  // TODO (ajkr): this preserves earlier behavior where we considered an L0 file id:130
   // bottommost only if it's the oldest L0 file and there are no files on older
   // levels. It'd be better to consider it bottommost if there's no overlap in
   // older levels/files.
@@ -2816,7 +2816,7 @@ Status VersionSet::ProcessManifestWrites(
         continue;
       }
       // We do a linear search on versions because versions is small.
-      // TODO(yanqin) maybe consider unordered_map
+      // TODO (yanqin) maybe consider unordered_map id:89
       Version* version = nullptr;
       VersionBuilder* builder = nullptr;
       for (int i = 0; i != static_cast<int>(versions.size()); ++i) {
@@ -3150,7 +3150,7 @@ Status VersionSet::LogAndApply(
     }
   }
   if (0 == num_undropped_cfds) {
-    // TODO (yanqin) maybe use a different status code to denote column family
+    // TODO (yanqin) maybe use a different status code to denote column family id:47
     // drop other than OK and ShutdownInProgress
     for (int i = 0; i != num_cfds; ++i) {
       manifest_writers_.pop_front();
@@ -3975,7 +3975,7 @@ void VersionSet::MarkMinLogNumberToKeep2PC(uint64_t number) {
 }
 
 Status VersionSet::WriteSnapshot(log::Writer* log) {
-  // TODO: Break up into multiple records to reduce memory usage on recovery?
+  // TODO: Break up into multiple records to reduce memory usage on recovery? id:123
 
   // WARNING: This method doesn't hold a mutex!!
 
@@ -4039,7 +4039,7 @@ Status VersionSet::WriteSnapshot(log::Writer* log) {
   return Status::OK();
 }
 
-// TODO(aekmekji): in CompactionJob::GenSubcompactionBoundaries(), this
+// TODO (aekmekji): in this CompactionJob::GenSubcompactionBoundaries(), id:65
 // function is called repeatedly with consecutive pairs of slices. For example
 // if the slice list is [a, b, c, d] this function is called with arguments
 // (a,b) then (b,c) then (c,d). Knowing this, an optimization is possible where
@@ -4207,7 +4207,7 @@ InternalIterator* VersionSet::MakeInputIterator(
 
   // Level-0 files have to be merged together.  For other levels,
   // we will make a concatenating iterator per level.
-  // TODO(opt): use concatenating iterator for level-0 if there is no overlap
+  // TODO (opt): use concatenating iterator for level-0 if there is no overlap id:131
   const size_t space = (c->level() == 0 ? c->input_levels(0)->num_files +
                                               c->num_input_levels() - 1
                                         : c->num_input_levels());

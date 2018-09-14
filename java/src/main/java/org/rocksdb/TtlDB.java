@@ -194,7 +194,7 @@ public class TtlDB extends RocksDB {
   }
 
   @Override protected void finalize() throws Throwable {
-    close(); //TODO(AR) revisit here when implementing AutoCloseable
+    close(); //TODO (AR) revisit here when implementing AutoCloseable id:172
     super.finalize();
   }
 

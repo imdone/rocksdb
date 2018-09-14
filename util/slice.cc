@@ -28,7 +28,7 @@ class FixedPrefixTransform : public SliceTransform {
         // Note that if any part of the name format changes, it will require
         // changes on options_helper in order to make RocksDBOptionsParser work
         // for the new change.
-        // TODO(yhchiang): move serialization / deserializaion code inside
+        // TODO (yhchiang): move serialization / deserializaion code inside id:364
         // the class implementation itself.
         name_("rocksdb.FixedPrefix." + ToString(prefix_len_)) {}
 
@@ -68,7 +68,7 @@ class CappedPrefixTransform : public SliceTransform {
         // Note that if any part of the name format changes, it will require
         // changes on options_helper in order to make RocksDBOptionsParser work
         // for the new change.
-        // TODO(yhchiang): move serialization / deserializaion code inside
+        // TODO (yhchiang): move serialization / deserializaion code inside id:309
         // the class implementation itself.
         name_("rocksdb.CappedPrefix." + ToString(cap_len_)) {}
 

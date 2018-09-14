@@ -953,7 +953,7 @@ Status BlobDBImpl::GetBlobValue(const Slice& key, const Slice& index_entry,
     }
   }
   if (blob_index.IsInlined()) {
-    // TODO(yiwu): If index_entry is a PinnableSlice, we can also pin the same
+    // TODO (yiwu): If index_entry is a PinnableSlice, we can also pin the same id:389
     // memory buffer to avoid extra copy.
     value->PinSelf(blob_index.value());
     return Status::OK();
@@ -1107,7 +1107,7 @@ Status BlobDBImpl::GetImpl(const ReadOptions& read_options,
   }
   // Get a snapshot to avoid blob file get deleted between we
   // fetch and index entry and reading from the file.
-  // TODO(yiwu): For Get() retry if file not found would be a simpler strategy.
+  // TODO (yiwu): For Get() retry if file not found would be a simpler strategy. id:366
   ReadOptions ro(read_options);
   bool snapshot_created = SetSnapshotIfNeeded(&ro);
 
@@ -1480,7 +1480,7 @@ Status BlobDBImpl::GCFileAndUpdateLSM(const std::shared_ptr<BlobFile>& bfptr,
     Status read_record_status =
         reader->ReadRecord(&record, shallow, &blob_offset);
     // Exit if we reach the end of blob file.
-    // TODO(yiwu): properly handle ReadRecord error.
+    // TODO (yiwu): properly handle ReadRecord error. id:311
     if (!read_record_status.ok()) {
       break;
     }
@@ -1537,7 +1537,7 @@ Status BlobDBImpl::GCFileAndUpdateLSM(const std::shared_ptr<BlobFile>& bfptr,
     GarbageCollectionWriteCallback callback(cfd, record.key, latest_seq);
 
     // If key has expired, remove it from base DB.
-    // TODO(yiwu): Blob indexes will be remove by BlobIndexCompactionFilter.
+    // TODO (yiwu): Blob indexes will be remove by BlobIndexCompactionFilter. id:284
     // We can just drop the blob record.
     if (file_expired || (has_ttl && now >= record.expiration)) {
       gc_stats->num_keys_expired++;
@@ -1759,7 +1759,7 @@ std::pair<bool, int64_t> BlobDBImpl::RunGC(bool aborted) {
     return std::make_pair(false, -1);
   }
 
-  // TODO(yiwu): Garbage collection implementation.
+  // TODO (yiwu): Garbage collection implementation. id:337
 
   // reschedule
   return std::make_pair(true, -1);

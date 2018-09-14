@@ -137,7 +137,7 @@ class ThreadStatusUpdater {
 
   // Set the "i"th property of the current operation.
   //
-  // NOTE: Our practice here is to set all the thread operation properties
+  // NOTE: Our practice here is to set all the thread operation properties id:176
   //       and stage before we set thread operation, and thread operation
   //       will be set in std::memory_order_release.  This is to ensure
   //       whenever a thread operation is not OP_UNKNOWN, we will always

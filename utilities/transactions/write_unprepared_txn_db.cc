@@ -20,7 +20,7 @@ namespace rocksdb {
 // unnecessary steps (eg. updating CommitMap, reconstructing keyset)
 Status WriteUnpreparedTxnDB::RollbackRecoveredTransaction(
     const DBImpl::RecoveredTransaction* rtxn) {
-  // TODO(lth): Reduce duplicate code with WritePrepared rollback logic.
+  // TODO (lth): Reduce duplicate code with WritePrepared rollback logic. id:414
   assert(rtxn->unprepared_);
   auto cf_map_shared_ptr = WritePreparedTxnDB::GetCFHandleMap();
   auto cf_comp_map_shared_ptr = WritePreparedTxnDB::GetCFComparatorMap();
@@ -163,7 +163,7 @@ Status WriteUnpreparedTxnDB::RollbackRecoveredTransaction(
 Status WriteUnpreparedTxnDB::Initialize(
     const std::vector<size_t>& compaction_enabled_cf_indices,
     const std::vector<ColumnFamilyHandle*>& handles) {
-  // TODO(lth): Reduce code duplication in this function.
+  // TODO (lth): Reduce code duplication in this function. id:402
   auto dbimpl = reinterpret_cast<DBImpl*>(GetRootDB());
   assert(dbimpl != nullptr);
 
@@ -339,7 +339,7 @@ static void CleanupWriteUnpreparedTxnDBIterator(void* arg1, void* /*arg2*/) {
 Iterator* WriteUnpreparedTxnDB::NewIterator(const ReadOptions& options,
                                             ColumnFamilyHandle* column_family,
                                             WriteUnpreparedTxn* txn) {
-  // TODO(lth): Refactor so that this logic is shared with WritePrepared.
+  // TODO (lth): Refactor so that this logic is shared with WritePrepared. id:379
   constexpr bool ALLOW_BLOB = true;
   constexpr bool ALLOW_REFRESH = true;
   std::shared_ptr<ManagedSnapshot> own_snapshot = nullptr;

@@ -30,7 +30,7 @@ $GCOV --preserve-paths --relative-only --no-output $GCNO_FILES 2>/dev/null |
   tee $COVERAGE_DIR/coverage_report_all.txt &&
 echo -e "Generated coverage report for all files: $COVERAGE_DIR/coverage_report_all.txt\n"
 
-# TODO: we also need to get the files of the latest commits.
+# TODO: we also need to get the files of the latest commits. id:5
 # Get the most recently committed files.
 LATEST_FILES=`
   git show --pretty="format:" --name-only HEAD |

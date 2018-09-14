@@ -115,7 +115,7 @@ Status WritePreparedTxnDB::Write(
     WritePreparedTxn* NO_TXN = nullptr;
     return WriteInternal(opts, updates, batch_cnt, NO_TXN);
   } else {
-    // TODO(myabandeh): Make use of skip_duplicate_key_check hint
+    // TODO (myabandeh): Make use of skip_duplicate_key_check hint id:376
     // Fall back to unoptimized version
     return PessimisticTransactionDB::Write(opts, updates);
   }
@@ -132,7 +132,7 @@ Status WritePreparedTxnDB::WriteInternal(const WriteOptions& write_options_orig,
     return Status::OK();
   }
   if (batch_cnt == 0) {  // not provided, then compute it
-    // TODO(myabandeh): add an option to allow user skipping this cost
+    // TODO (myabandeh): add an option to allow user skipping this cost id:419
     SubBatchCounter counter(*GetCFComparatorMap());
     auto s = batch->Iterate(&counter);
     assert(s.ok());

@@ -68,7 +68,7 @@ extern std::string MakeTableFileName(const std::string& name, uint64_t number);
 extern std::string Rocks2LevelTableFileName(const std::string& fullname);
 
 // the reverse function of MakeTableFileName
-// TODO(yhchiang): could merge this function with ParseFileName()
+// TODO (yhchiang): could merge this function with ParseFileName() id:281
 extern uint64_t TableFileNameToNumber(const std::string& name);
 
 // Return the name of the sstable with the specified number

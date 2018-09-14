@@ -25,7 +25,7 @@
 
 namespace rocksdb {
 
-// TODO(yhchiang): the rate will not be accurate when we run test in parallel.
+// TODO (yhchiang): the rate will not be accurate when we run test in parallel. id:334
 class RateLimiterTest : public testing::Test {};
 
 TEST_F(RateLimiterTest, OverflowRate) {
@@ -165,7 +165,7 @@ TEST_F(RateLimiterTest, LimitChangeTest) {
       // The idea behind is to start a request first, then before it refills,
       // update limit to a different value (2X/0.5X). No starvation should
       // be guaranteed under any situation
-      // TODO(lightmark): more test cases are welcome.
+      // TODO (lightmark): more test cases are welcome. id:387
       env->StartThread(writer, &arg);
       int32_t new_limit = (target << 1) >> (iter << 1);
       TEST_SYNC_POINT("RateLimiterTest::LimitChangeTest:changeLimitStart");

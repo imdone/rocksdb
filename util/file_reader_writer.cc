@@ -318,7 +318,7 @@ Status WritableFileWriter::Flush() {
   }
 
   // sync OS cache to disk for every bytes_per_sync_
-  // TODO: give log file and sst file different options (log
+  // TODO: give log file and sst file different options (log id:363
   // files could be potentially cached in OS for their whole
   // life time, thus we might not want to flush at all).
 

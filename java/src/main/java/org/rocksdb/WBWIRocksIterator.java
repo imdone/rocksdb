@@ -145,14 +145,14 @@ public class WBWIRocksIterator
      */
     public DirectSlice getValue() {
       if(!value.isOwningHandle()) {
-        return null; //TODO(AR) migrate to JDK8 java.util.Optional#empty()
+        return null; //TODO (AR) migrate to JDK8 java.util.Optional#empty() id:246
       } else {
         return value;
       }
     }
 
     /**
-     * Generates a hash code for the Write Entry. NOTE: The hash code is based
+     * Generates a hash code for the Write Entry. NOTE: The hash code is based id:199
      * on the string representation of the key, so it may not work correctly
      * with exotic custom comparators.
      *

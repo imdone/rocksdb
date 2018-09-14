@@ -934,7 +934,7 @@ class PosixEnv : public Env {
     optimized.use_mmap_writes = false;
     optimized.use_direct_writes = false;
     optimized.bytes_per_sync = db_options.wal_bytes_per_sync;
-    // TODO(icanadi) it's faster if fallocate_with_keep_size is false, but it
+    // TODO (icanadi) it's faster if fallocate_with_keep_size is false, but it id:67
     // breaks TransactionLogIteratorStallAtLastRecord unit test. Fix the unit
     // test and make this false
     optimized.fallocate_with_keep_size = true;

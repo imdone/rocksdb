@@ -83,7 +83,7 @@ size_t GetLogicalBufferSize(int __attribute__((__unused__)) fd) {
   if (!device_dir.empty() && device_dir.back() == '/') {
     device_dir.pop_back();
   }
-  // NOTE: sda3 does not have a `queue/` subdir, only the parent sda has it.
+  // NOTE: sda3 does not have a `queue/` subdir, only the parent sda has it. id:133
   // $ ls -al '/sys/dev/block/8:3'
   // lrwxrwxrwx. 1 root root 0 Jun 26 01:38 /sys/dev/block/8:3 ->
   // ../../block/sda/sda3
@@ -814,7 +814,7 @@ Status PosixWritableFile::Close() {
   GetPreallocationStatus(&block_size, &last_allocated_block);
   if (last_allocated_block > 0) {
     // trim the extra space preallocated at the end of the file
-    // NOTE(ljin): we probably don't want to surface failure as an IOError,
+    // NOTE (ljin): we probably don't want to surface failure as an IOError, id:92
     // but it will be nice to log these errors.
     int dummy __attribute__((__unused__));
     dummy = ftruncate(fd_, filesize_);
@@ -1053,7 +1053,7 @@ Status PosixRandomRWFile::Close() {
 }
 
 PosixMemoryMappedFileBuffer::~PosixMemoryMappedFileBuffer() {
-  // TODO should have error handling though not much we can do...
+  // TODO should have error handling though not much we can do... id:50
   munmap(this->base_, length_);
 }
 

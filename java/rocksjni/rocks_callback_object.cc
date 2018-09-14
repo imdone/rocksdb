@@ -19,7 +19,7 @@
 void Java_org_rocksdb_RocksCallbackObject_disposeInternal(JNIEnv* /*env*/,
                                                           jobject /*jobj*/,
                                                           jlong handle) {
-  // TODO(AR) is deleting from the super class JniCallback OK, or must we delete
+  // TODO (AR) is deleting from the super class JniCallback OK, or must we delete id:159
   // the subclass? Example hierarchies:
   //   1) Comparator -> BaseComparatorJniCallback + JniCallback ->
   //   DirectComparatorJniCallback 2) Comparator -> BaseComparatorJniCallback +

@@ -35,7 +35,7 @@ public class DBOptions
   /**
    * Copy constructor for DBOptions.
    *
-   * NOTE: This does a shallow copy, which means env, rate_limiter, sst_file_manager,
+   * NOTE: This does a shallow copy, which means env, rate_limiter, sst_file_manager, id:217
    * info_log and other pointers will be cloned!
    *
    * @param other The DBOptions to copy.
@@ -1153,7 +1153,7 @@ public class DBOptions
   private native boolean avoidFlushDuringShutdown(final long handle);
 
   // instance variables
-  // NOTE: If you add new member variables, please update the copy constructor above!
+  // NOTE: If you add new member variables, please update the copy constructor above! id:149
   private Env env_;
   private int numShardBits_;
   private RateLimiter rateLimiter_;

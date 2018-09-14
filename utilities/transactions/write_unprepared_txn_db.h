@@ -41,7 +41,7 @@ class WriteUnpreparedTxnDB : public WritePreparedTxnDB {
 };
 
 class WriteUnpreparedCommitEntryPreReleaseCallback : public PreReleaseCallback {
-  // TODO(lth): Reduce code duplication with
+  // TODO (lth): Reduce code duplication with id:422
   // WritePreparedCommitEntryPreReleaseCallback
  public:
   // includes_data indicates that the commit also writes non-empty

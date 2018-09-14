@@ -151,7 +151,7 @@ WriteBatchWithIndexInternal::Result WriteBatchWithIndexInternal::GetFromBatch(
 
   // We want to iterate in the reverse order that the writes were added to the
   // batch.  Since we don't have a reverse iterator, we must seek past the end.
-  // TODO(agiardullo): consider adding support for reverse iteration
+  // TODO (agiardullo): consider adding support for reverse iteration id:415
   iter->Seek(key);
   while (iter->Valid()) {
     const WriteEntry entry = iter->Entry();

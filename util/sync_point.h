@@ -109,7 +109,7 @@ class SyncPoint {
   // And/or call registered callback function, with argument `cb_arg`
   void Process(const std::string& point, void* cb_arg = nullptr);
 
-  // TODO: it might be useful to provide a function that blocks until all
+  // TODO: it might be useful to provide a function that blocks until all id:282
   // sync points are cleared.
 
   // We want this to be public so we can

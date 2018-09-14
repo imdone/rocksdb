@@ -26,7 +26,7 @@ namespace rocksdb {
 // automatically indexed and is an unique primary key. All other indexes are
 // non-unique.
 
-// NOTE: field names in the JSON are NOT allowed to start with '$' or
+// NOTE: field names in the JSON are NOT allowed to start with '$' or id:72
 // contain '.'. We don't currently enforce that rule, but will start behaving
 // badly.
 
@@ -55,7 +55,7 @@ struct DocumentDBOptions {
   uint64_t cache_size = 1 * 1024 * 1024 * 1024;  // 1 GB
 };
 
-// TODO(icanadi) Add `JSONDocument* info` parameter to all calls that can be
+// TODO (icanadi) Add `JSONDocument* info` parameter to all calls that can be id:138
 // used by the caller to get more information about the call execution (number
 // of dropped records, number of updated records, etc.)
 class DocumentDB : public StackableDB {

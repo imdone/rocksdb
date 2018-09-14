@@ -1075,7 +1075,7 @@ Status DBImpl::GetImpl(const ReadOptions& read_options,
   auto cfd = cfh->cfd();
 
   if (tracer_) {
-    // TODO: This mutex should be removed later, to improve performance when
+    // TODO: This mutex should be removed later, to improve performance when id:27
     // tracing is enabled.
     InstrumentedMutexLock lock(&trace_mutex_);
     if (tracer_) {
@@ -1281,7 +1281,7 @@ std::vector<Status> DBImpl::MultiGet(
   PERF_TIMER_GUARD(get_post_process_time);
   autovector<SuperVersion*> superversions_to_delete;
 
-  // TODO(icanadi) do we need lock here or just around Cleanup()?
+  // TODO (icanadi) do we need lock here or just around Cleanup()? id:33
   mutex_.Lock();
   for (auto mgd_iter : multiget_cf_data) {
     auto mgd = mgd_iter.second;
@@ -2004,7 +2004,7 @@ bool DBImpl::GetAggregatedIntProperty(const Slice& property,
 }
 
 SuperVersion* DBImpl::GetAndRefSuperVersion(ColumnFamilyData* cfd) {
-  // TODO(ljin): consider using GetReferencedSuperVersion() directly
+  // TODO (ljin): consider using GetReferencedSuperVersion() directly id:109
   return cfd->GetThreadLocalSuperVersion(&mutex_);
 }
 
@@ -2864,7 +2864,7 @@ Status DBImpl::GetLatestSequenceForKey(SuperVersion* sv, const Slice& key,
     return Status::OK();
   }
 
-  // TODO(agiardullo): possible optimization: consider checking cached
+  // TODO (agiardullo): possible optimization: consider checking cached id:51
   // SST files if cache_only=true?
   if (!cache_only) {
     // Check tables

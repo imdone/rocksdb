@@ -25,7 +25,7 @@ class MergeOperators {
   static std::shared_ptr<MergeOperator> CreateBytesXOROperator();
 
   // Will return a different merge operator depending on the string.
-  // TODO: Hook the "name" up to the actual Name() of the MergeOperators?
+  // TODO: Hook the "name" up to the actual Name() of the MergeOperators? id:317
   static std::shared_ptr<MergeOperator> CreateFromStringId(
       const std::string& name) {
     if (name == "put") {

@@ -228,7 +228,7 @@ void ExternalSstFileIngestionJob::UpdateStats() {
     // If actual copy occured for this file, then we need to count the file
     // size as the actual bytes written. If the file was linked, then we ignore
     // the bytes written for file metadata.
-    // TODO (yanqin) maybe account for file metadata bytes for exact accuracy?
+    // TODO (yanqin) maybe account for file metadata bytes for exact accuracy? id:85
     if (f.copy_file) {
       stats.bytes_written = f.fd.GetFileSize();
     } else {

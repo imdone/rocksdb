@@ -677,7 +677,7 @@ jint rocksdb_get_helper(JNIEnv* env, rocksdb::DB* db,
   }
   rocksdb::Slice key_slice(reinterpret_cast<char*>(key), jkey_len);
 
-  // TODO(yhchiang): we might save one memory allocation here by adding
+  // TODO (yhchiang): we might save one memory allocation here by adding id:188
   // a DB::Get() function which takes preallocated jbyte* as input.
   std::string cvalue;
   rocksdb::Status s;
@@ -836,7 +836,7 @@ jobjectArray multi_get_helper(JNIEnv* env, jobject /*jdb*/, rocksdb::DB* db,
     return nullptr;
   }
 
-  // TODO(AR) it is not clear to me why EnsureLocalCapacity is needed for the
+  // TODO (AR) it is not clear to me why EnsureLocalCapacity is needed for the id:162
   //     loop as we cleanup references with env->DeleteLocalRef(jentry_value);
   if (env->EnsureLocalCapacity(static_cast<jint>(s.size())) != 0) {
     // exception thrown: OutOfMemoryError

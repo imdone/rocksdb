@@ -149,7 +149,7 @@ Status BuildTable(
       builder->Add(key, value);
       meta->UpdateBoundaries(key, c_iter.ikey().sequence);
 
-      // TODO(noetzli): Update stats after flush, too.
+      // TODO (noetzli): Update stats after flush, too. id:23
       if (io_priority == Env::IO_HIGH &&
           IOSTATS(bytes_written) >= kReportFlushIOStatsEvery) {
         ThreadStatusUtil::SetThreadOperationProperty(

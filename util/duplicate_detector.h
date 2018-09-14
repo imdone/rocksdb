@@ -49,7 +49,7 @@ class DuplicateDetector {
   void InitWithComp(const uint32_t cf) {
     auto h = db_->GetColumnFamilyHandle(cf);
     if (!h) {
-      // TODO(myabandeh): This is not a concern in MyRocks as drop cf is not
+      // TODO (myabandeh): This is not a concern in MyRocks as drop cf is not id:386
       // implemented yet. When it does, we should return proper error instead
       // of throwing exception.
       ROCKS_LOG_FATAL(

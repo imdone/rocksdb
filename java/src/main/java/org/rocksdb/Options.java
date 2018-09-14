@@ -54,7 +54,7 @@ public class Options extends RocksObject
   /**
    * Copy constructor for ColumnFamilyOptions.
    *
-   * NOTE: This does a shallow copy, which means comparator, merge_operator
+   * NOTE: This does a shallow copy, which means comparator, merge_operator id:242
    * and other pointers will be cloned!
    *
    * @param other The Options to copy.
@@ -1899,7 +1899,7 @@ public class Options extends RocksObject
   private native boolean forceConsistencyChecks(final long handle);
 
   // instance variables
-  // NOTE: If you add new member variables, please update the copy constructor above!
+  // NOTE: If you add new member variables, please update the copy constructor above! id:195
   private Env env_;
   private MemTableConfig memTableConfig_;
   private TableFormatConfig tableFormatConfig_;

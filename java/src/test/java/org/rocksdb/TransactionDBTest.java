@@ -161,7 +161,7 @@ public class TransactionDBTest {
          final TransactionDB tdb = TransactionDB.open(options, txnDbOptions,
              dbFolder.getRoot().getAbsolutePath())) {
 
-      // TODO(AR) can we cause a deadlock so that we can test the output here?
+      // TODO (AR) can we cause a deadlock so that we can test the output here? id:248
       assertThat(tdb.getDeadlockInfoBuffer()).isEmpty();
     }
   }

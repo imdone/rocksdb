@@ -118,7 +118,7 @@ bool DateTieredDBImpl::IsStale(int64_t keytime, int64_t ttl, Env* env) {
 }
 
 // Drop column family when all data in that column family is expired
-// TODO(jhli): Can be made a background job
+// TODO (jhli): Can be made a background job id:312
 Status DateTieredDBImpl::DropObsoleteColumnFamilies() {
   int64_t curtime;
   Status s;

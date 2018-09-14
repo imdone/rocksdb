@@ -51,7 +51,7 @@ static void DumpInternalIter(Iterator* iter) {
 // numbers, deletion markers, overwrites, etc.
 class DBIter final: public Iterator {
  public:
-  // The following is grossly complicated. TODO: clean it up
+  // The following is grossly complicated. TODO: clean it up id:114
   // Which direction is the iterator currently moving?
   // (1) When moving forward:
   //   (1a) if current_entry_is_merged_ = false, the internal iterator is
@@ -416,7 +416,7 @@ void DBIter::Next() {
 //           current_entry_is_merged_ => true
 //           saved_value_             => the merged value
 //
-// NOTE: In between, saved_key_ can point to a user key that has
+// NOTE: In between, saved_key_ can point to a user key that has id:56
 //       a delete marker or a sequence number higher than sequence_
 //       saved_key_ MUST have a proper user_key before calling this function
 //
@@ -1029,7 +1029,7 @@ bool DBIter::FindValueForCurrentKey() {
 
 // This function is used in FindValueForCurrentKey.
 // We use Seek() function instead of Prev() to find necessary value
-// TODO: This is very similar to FindNextUserEntry() and MergeValuesNewToOld().
+// TODO: This is very similar to FindNextUserEntry() and MergeValuesNewToOld(). id:15
 //       Would be nice to reuse some code.
 bool DBIter::FindValueForCurrentKeyUsingSeek() {
   // FindValueForCurrentKey will enable pinning before calling
@@ -1540,7 +1540,7 @@ Status ArenaWrappedDBIter::Refresh() {
     return Status::NotSupported("Creating renew iterator is not allowed.");
   }
   assert(db_iter_ != nullptr);
-  // TODO(yiwu): For last_seq_same_as_publish_seq_==false, this is not the
+  // TODO (yiwu): For last_seq_same_as_publish_seq_==false, this is not the id:81
   // correct behavior. Will be corrected automatically when we take a snapshot
   // here for the case of WritePreparedTxnDB.
   SequenceNumber latest_seq = db_impl_->GetLatestSequenceNumber();

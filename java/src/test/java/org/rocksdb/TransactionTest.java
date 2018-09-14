@@ -36,7 +36,7 @@ public class TransactionTest extends AbstractTransactionTest {
         try(final Transaction txn3 = dbContainer.beginTransaction()) {
           assertThat(txn3.getForUpdate(readOptions, testCf, k1, true)).isEqualTo(v1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:201
           try {
             txn2.put(testCf, k1, v12); // should cause an exception!
           } catch(final RocksDBException e) {
@@ -69,7 +69,7 @@ public class TransactionTest extends AbstractTransactionTest {
         try(final Transaction txn3 = dbContainer.beginTransaction()) {
           assertThat(txn3.getForUpdate(readOptions, k1, true)).isEqualTo(v1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:224
           try {
             txn2.put(k1, v12); // should cause an exception!
           } catch(final RocksDBException e) {
@@ -111,7 +111,7 @@ public class TransactionTest extends AbstractTransactionTest {
           assertThat(txn3.multiGetForUpdate(readOptions, cfList, keys))
               .isEqualTo(values);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:233
           try {
             txn2.put(testCf, keys[0], otherValue); // should cause an exception!
           } catch(final RocksDBException e) {
@@ -150,7 +150,7 @@ public class TransactionTest extends AbstractTransactionTest {
           assertThat(txn3.multiGetForUpdate(readOptions, keys))
               .isEqualTo(values);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:175
           try {
             txn2.put(keys[0], otherValue); // should cause an exception!
           } catch(final RocksDBException e) {

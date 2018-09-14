@@ -36,7 +36,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
         try(final Transaction txn3 = dbContainer.beginTransaction()) {
           assertThat(txn3.getForUpdate(readOptions, testCf, k1, true)).isEqualTo(v1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:173
           txn2.put(testCf, k1, v12);
           assertThat(txn2.get(testCf, readOptions, k1)).isEqualTo(v12);
           txn2.commit();
@@ -73,7 +73,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
         try(final Transaction txn3 = dbContainer.beginTransaction()) {
           assertThat(txn3.getForUpdate(readOptions, k1, true)).isEqualTo(v1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:247
           txn2.put(k1, v12);
           assertThat(txn2.get(readOptions, k1)).isEqualTo(v12);
           txn2.commit();
@@ -119,7 +119,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
           assertThat(txn3.multiGetForUpdate(readOptions, cfList, keys))
               .isEqualTo(values);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:200
           txn2.put(testCf, keys[0], otherValue);
           assertThat(txn2.get(testCf, readOptions, keys[0]))
               .isEqualTo(otherValue);
@@ -163,7 +163,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
           assertThat(txn3.multiGetForUpdate(readOptions, keys))
               .isEqualTo(values);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:223
           txn2.put(keys[0], otherValue);
           assertThat(txn2.get(readOptions, keys[0]))
               .isEqualTo(otherValue);
@@ -205,7 +205,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
           // undo the getForUpdate
           txn3.undoGetForUpdate(testCf, k1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:232
           txn2.put(testCf, k1, v12);
           assertThat(txn2.get(testCf, readOptions, k1)).isEqualTo(v12);
           txn2.commit();
@@ -239,7 +239,7 @@ public class OptimisticTransactionTest extends AbstractTransactionTest {
           // undo the getForUpdate
           txn3.undoGetForUpdate(k1);
 
-          // NOTE: txn2 updates k1, during txn3
+          // NOTE: txn2 updates k1, during txn3 id:174
           txn2.put(k1, v12);
           assertThat(txn2.get(readOptions, k1)).isEqualTo(v12);
           txn2.commit();

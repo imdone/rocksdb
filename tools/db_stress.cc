@@ -17,7 +17,7 @@
 // time, you could change the settings: FLAGS_max_key, FLAGS_ops_per_thread,
 // (sometimes also FLAGS_threads).
 //
-// NOTE that if FLAGS_test_batches_snapshots is set, the test will have
+// NOTE that if FLAGS_test_batches_snapshots is set, the test will have id:330
 // different behavior. See comment of the flag for details.
 
 #ifndef GFLAGS
@@ -120,7 +120,7 @@ DEFINE_int64(
     "and ends with its right endpoint at max_key. If set to 0, active_width "
     "will be sanitized to be equal to max_key.");
 
-// TODO(noetzli) Add support for single deletes
+// TODO (noetzli) Add support for single deletes id:383
 DEFINE_bool(test_batches_snapshots, false,
             "If set, the test uses MultiGet(), MultiPut() and MultiDelete()"
             " which read/write/delete multiple keys in a batch. In this mode,"
@@ -1437,7 +1437,7 @@ class StressTest {
         {"memtable_huge_page_size", {"0", ToString(2 * 1024 * 1024)}},
         {"max_successive_merges", {"0", "2", "4"}},
         {"inplace_update_num_locks", {"100", "200", "300"}},
-        // TODO(ljin): enable test for this option
+        // TODO (ljin): enable test for this option id:356
         // {"disable_auto_compactions", {"100", "200", "300"}},
         {"soft_rate_limit", {"0", "0.5", "0.9"}},
         {"hard_rate_limit", {"0", "1.1", "2.0"}},
@@ -2581,7 +2581,7 @@ class NonBatchedOpsStressTest : public StressTest {
           if (thread->shared->HasVerificationFailedYet()) {
             break;
           }
-          // TODO(ljin): update "long" to uint64_t
+          // TODO (ljin): update "long" to uint64_t id:305
           // Reseek when the prefix changes
           if (i % (static_cast<int64_t>(1) << 8 * (8 - FLAGS_prefix_size)) ==
               0) {

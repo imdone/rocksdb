@@ -72,7 +72,7 @@ struct SstFileWriter::Rep {
       }
     }
 
-    // TODO(tec) : For external SST files we could omit the seqno and type.
+    // TODO (tec) : For external SST files we could omit the seqno and type. id:258
     switch (value_type) {
       case ValueType::kTypeValue:
         ikey.Set(user_key, 0 /* Sequence Number */,
@@ -240,7 +240,7 @@ Status SstFileWriter::Open(const std::string& file_path) {
   r->file_writer.reset(
       new WritableFileWriter(std::move(sst_file), file_path, r->env_options));
 
-  // TODO(tec) : If table_factory is using compressed block cache, we will
+  // TODO (tec) : If table_factory is using compressed block cache, we will id:211
   // be adding the external sst file blocks into it, which is wasteful.
   r->builder.reset(r->ioptions.table_factory->NewTableBuilder(
       table_builder_options, cf_id, r->file_writer.get()));

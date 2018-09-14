@@ -129,7 +129,7 @@ Status DBImpl::TEST_WaitForFlushMemTable(ColumnFamilyHandle* column_family) {
 Status DBImpl::TEST_WaitForCompact(bool wait_unscheduled) {
   // Wait until the compaction completes
 
-  // TODO: a bug here. This function actually does not necessarily
+  // TODO: a bug here. This function actually does not necessarily id:112
   // wait for compact. It actually waits for scheduled compaction
   // OR flush to finish.
 

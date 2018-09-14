@@ -25,7 +25,7 @@ struct KeyVersion {
   std::string user_key;
   std::string value;
   SequenceNumber sequence;
-  // TODO(ajkr): we should provide a helper function that converts the int to a
+  // TODO (ajkr): we should provide a helper function that converts the int to a id:183
   // string describing the type for easier debugging.
   int type;
 };

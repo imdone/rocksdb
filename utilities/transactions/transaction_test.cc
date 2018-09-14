@@ -1335,7 +1335,7 @@ TEST_P(TransactionTest, PersistentTwoPhaseTransactionTest) {
   ASSERT_EQ(db->GetTransactionByName("xid"), nullptr);
 }
 
-// TODO this test needs to be updated with serial commits
+// TODO this test needs to be updated with serial commits id:398
 TEST_P(TransactionTest, DISABLED_TwoPhaseMultiThreadTest) {
   // mix transaction writes and regular writes
   const uint32_t NUM_TXN_THREADS = 50;
@@ -5045,7 +5045,7 @@ TEST_P(TransactionTest, MemoryLimitTest) {
 // necessarily the one acceptable way. If the algorithm is legitimately changed,
 // this unit test should be updated as well.
 TEST_P(TransactionStressTest, SeqAdvanceTest) {
-  // TODO(myabandeh): must be test with false before new releases
+  // TODO (myabandeh): must be test with false before new releases id:375
   const bool short_test = true;
   WriteOptions wopts;
   FlushOptions fopt;
@@ -5348,7 +5348,7 @@ TEST_P(TransactionTest, DuplicateKeys) {
             assert(do_prepare);
             auto cb = txn0->GetCommitTimeWriteBatch();
             // duplicate a key in the original batch
-            // TODO(myabandeh): the behavior of GetCommitTimeWriteBatch
+            // TODO (myabandeh): the behavior of GetCommitTimeWriteBatch id:418
             // conflicting with the prepared batch is currently undefined and
             // gives different results in different implementations.
 

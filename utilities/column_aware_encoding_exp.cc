@@ -32,7 +32,7 @@ DEFINE_string(encoded_file, "", "file to store encoded data blocks");
 DEFINE_string(decoded_file, "",
               "file to store decoded data blocks after encoding");
 DEFINE_string(format, "col", "Output Format. Can be 'row' or 'col'");
-// TODO(jhli): option `col` should be removed and replaced by general
+// TODO (jhli): option `col` should be removed and replaced by general id:367
 // column specifications.
 DEFINE_string(index_type, "col", "Index type. Can be 'primary' or 'secondary'");
 DEFINE_string(dump_file, "",

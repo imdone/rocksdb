@@ -175,7 +175,7 @@ class KeyGenerator {
   KeyGenerator(Random64* rand, WriteMode mode, uint64_t num)
       : rand_(rand), mode_(mode), num_(num), next_(0) {
     if (mode_ == UNIQUE_RANDOM) {
-      // NOTE: if memory consumption of this approach becomes a concern,
+      // NOTE: if memory consumption of this approach becomes a concern, id:249
       // we can either break it into pieces and only random shuffle a section
       // each time. Alternatively, use a bit map implementation
       // (https://reviews.facebook.net/differential/diff/54627/)

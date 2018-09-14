@@ -28,7 +28,7 @@
 
 namespace rocksdb {
 
-// TODO(yhchiang): remove this function once c++14 is available
+// TODO (yhchiang): remove this function once c++14 is available id:137
 //                 as std::max will be able to cover this.
 // Current MS compiler does not support constexpr
 template <int A, int B>

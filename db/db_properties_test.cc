@@ -671,7 +671,7 @@ TEST_F(DBPropertiesTest, NumImmutableMemTable) {
   } while (ChangeCompactOptions());
 }
 
-// TODO(techdept) : Disabled flaky test #12863555
+// TODO (techdept) : Disabled flaky test #12863555 id:58
 TEST_F(DBPropertiesTest, DISABLED_GetProperty) {
   // Set sizes to both background thread pool to be 1 and block them.
   env_->SetBackgroundThreads(1, Env::HIGH);
@@ -829,7 +829,7 @@ TEST_F(DBPropertiesTest, DISABLED_GetProperty) {
 
 TEST_F(DBPropertiesTest, ApproximateMemoryUsage) {
   const int kNumRounds = 10;
-  // TODO(noetzli) kFlushesPerRound does not really correlate with how many
+  // TODO (noetzli) kFlushesPerRound does not really correlate with how many id:17
   // flushes happen.
   const int kFlushesPerRound = 10;
   const int kWritesPerFlush = 10;

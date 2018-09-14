@@ -350,7 +350,7 @@ TEST_P(WriteUnpreparedTransactionTest, UnpreparedBatch) {
 // after memtable finishes flushing, and whether they are removed when
 // transaction commits/aborts.
 //
-// TODO(lth): Merge with TransactionTest/TwoPhaseLogRollingTest tests.
+// TODO (lth): Merge with TransactionTest/TwoPhaseLogRollingTest tests. id:400
 TEST_P(WriteUnpreparedTransactionTest, MarkLogWithPrepSection) {
   WriteOptions write_options;
   TransactionOptions txn_options;

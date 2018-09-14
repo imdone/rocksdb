@@ -180,7 +180,7 @@ class Block {
   // If `prefix_index` is not nullptr this block will do hash lookup for the key
   // prefix. If total_order_seek is true, prefix_index_ is ignored.
   //
-  // NOTE: for the hash based lookup, if a key prefix doesn't match any key,
+  // NOTE: for the hash based lookup, if a key prefix doesn't match any key, id:252
   // the iterator will simply be set as "invalid", rather than returning
   // the key that is just pass the target key.
   template <typename TBlockIter>
@@ -302,7 +302,7 @@ class BlockIter : public InternalIteratorBase<TValue> {
  public:
   // Return the offset in data_ just past the end of the current entry.
   inline uint32_t NextEntryOffset() const {
-    // NOTE: We don't support blocks bigger than 2GB
+    // NOTE: We don't support blocks bigger than 2GB id:205
     return static_cast<uint32_t>((value_.data() + value_.size()) - data_);
   }
 

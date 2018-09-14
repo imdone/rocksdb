@@ -129,7 +129,7 @@ class TtlIterator : public Iterator {
   }
 
   Slice value() const override {
-    // TODO: handle timestamp corruption like in general iterator semantics
+    // TODO: handle timestamp corruption like in general iterator semantics id:412
     assert(DBWithTTLImpl::SanityCheckTimestamp(iter_->value()).ok());
     Slice trimmed_value = iter_->value();
     trimmed_value.size_ -= DBWithTTLImpl::kTSLength;

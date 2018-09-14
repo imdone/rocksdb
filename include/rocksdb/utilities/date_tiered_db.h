@@ -34,7 +34,7 @@ namespace rocksdb {
 // expired (CF_Timestamp <= CUR_Timestamp - TTL), we directly drop the whole
 // column family.
 //
-// TODO(jhli): This is only a simplified version of DTCS. In a complete DTCS,
+// TODO (jhli): This is only a simplified version of DTCS. In a complete DTCS, id:96
 // time windows can be merged over time, so that older time windows will have
 // larger time range. Also, compaction are executed only for adjacent SST files
 // to guarantee there is no time overlap between SST files.
@@ -49,7 +49,7 @@ class DateTieredDB {
   // the time range of a column family interval.
   //
   // Open a read only database if read only is set as true.
-  // TODO(jhli): Should use an option object that includes ttl and
+  // TODO (jhli): Should use an option object that includes ttl and id:154
   // column_family_interval.
   static Status Open(const Options& options, const std::string& dbname,
                      DateTieredDB** dbptr, int64_t ttl,

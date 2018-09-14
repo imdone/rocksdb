@@ -217,7 +217,7 @@ int RedisLists::PushLeft(const std::string& key, const std::string& value) {
 }
 
 // Append value onto end of (list: key)
-// TODO: Make this O(1) time. Might require MergeOperator.
+// TODO: Make this O(1) time. Might require MergeOperator. id:396
 //   : throws RedisListException
 int RedisLists::PushRight(const std::string& key, const std::string& value) {
   // Get the original list data
@@ -355,7 +355,7 @@ bool RedisLists::PopLeft(const std::string& key, std::string* result) {
 }
 
 // Remove and return the last element in the list (or "" if empty)
-// TODO: Make this O(1). Might require MergeOperator.
+// TODO: Make this O(1). Might require MergeOperator. id:373
 //   : throws RedisListException
 bool RedisLists::PopRight(const std::string& key, std::string* result) {
   // Extract the original list data
@@ -448,7 +448,7 @@ int RedisLists::RemoveFirst(const std::string& key, int32_t num,
 
 
 // Remove the last "num" occurrences of value in (list: key).
-// TODO: I traverse the list 2x. Make faster. Might require MergeOperator.
+// TODO: I traverse the list 2x. Make faster. Might require MergeOperator. id:416
 //   : throws RedisListException
 int RedisLists::RemoveLast(const std::string& key, int32_t num,
                            const std::string& value) {

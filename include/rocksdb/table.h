@@ -58,7 +58,7 @@ struct BlockBasedTableOptions {
   // `FlushBlockBySizePolicy`).
   std::shared_ptr<FlushBlockPolicyFactory> flush_block_policy_factory;
 
-  // TODO(kailiu) Temporarily disable this feature by making the default value
+  // TODO (kailiu) Temporarily disable this feature by making the default value id:153
   // to be false.
   //
   // Indicating if we'd put index/filter blocks to the block cache.
@@ -168,13 +168,13 @@ struct BlockBasedTableOptions {
   // block size reaches the specified limit.
   // Note: this limit is currently applied to only index blocks; a filter
   // partition is cut right after an index block is cut
-  // TODO(myabandeh): remove the note above when filter partitions are cut
+  // TODO (myabandeh): remove the note above when filter partitions are cut id:129
   // separately
   uint64_t metadata_block_size = 4096;
 
   // Note: currently this option requires kTwoLevelIndexSearch to be set as
   // well.
-  // TODO(myabandeh): remove the note above once the limitation is lifted
+  // TODO (myabandeh): remove the note above once the limitation is lifted id:71
   // Use partitioned full filters for each SST file. This option is
   // incompatible with block-based filters.
   bool partition_filters = false;

@@ -391,7 +391,7 @@ void TestInternalKeyPropertiesCollector(
     // with sanitization, even regular properties collector will be able to
     // handle internal keys.
     auto comparator = options.comparator;
-    // HACK: Set options.info_log to avoid writing log in
+    // HACK: Set options.info_log to avoid writing log in id:46
     // SanitizeOptions().
     options.info_log = std::make_shared<test::NullLogger>();
     options = SanitizeOptions("db",            // just a place holder

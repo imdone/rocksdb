@@ -90,7 +90,7 @@ Status DBImpl::WriteImpl(const WriteOptions& write_options,
         "pipelined_writes is not compatible with concurrent prepares");
   }
   if (seq_per_batch_ && immutable_db_options_.enable_pipelined_write) {
-    // TODO(yiwu): update pipeline write with seq_per_batch and batch_cnt
+    // TODO (yiwu): update pipeline write with seq_per_batch and batch_cnt id:55
     return Status::NotSupported(
         "pipelined_writes is not compatible with seq_per_batch");
   }
@@ -157,7 +157,7 @@ Status DBImpl::WriteImpl(const WriteOptions& write_options,
           }
         }
       }
-      // TODO(myabandeh): propagate status to write_group
+      // TODO (myabandeh): propagate status to write_group id:14
       auto last_sequence = w.write_group->last_sequence;
       versions_->SetLastSequence(last_sequence);
       MemTableInsertStatusCheck(w.status);
@@ -845,7 +845,7 @@ Status DBImpl::WriteToWAL(const WriteBatch& merged_batch,
     *log_used = logfile_number_;
   }
   total_log_size_ += log_entry.size();
-  // TODO(myabandeh): it might be unsafe to access alive_log_files_.back() here
+  // TODO (myabandeh): it might be unsafe to access alive_log_files_.back() here id:80
   // since alive_log_files_ might be modified concurrently
   alive_log_files_.back().AddSize(log_entry.size());
   log_empty_ = false;

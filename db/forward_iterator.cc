@@ -343,7 +343,7 @@ void ForwardIterator::SeekInternal(const Slice& internal_key,
                   mutable_iter_->Seek(internal_key);
 
   // immutable
-  // TODO(ljin): NeedToSeekImmutable has negative impact on performance
+  // TODO (ljin): NeedToSeekImmutable has negative impact on performance id:20
   // if it turns to need to seek immutable often. We probably want to have
   // an option to turn it off.
   if (seek_to_first || NeedToSeekImmutable(internal_key)) {

@@ -19,7 +19,7 @@ public class ReadOptions extends RocksObject {
   /**
    * Copy constructor.
    *
-   * NOTE: This does a shallow copy, which means snapshot, iterate_upper_bound
+   * NOTE: This does a shallow copy, which means snapshot, iterate_upper_bound id:218
    * and other pointers will be cloned!
    *
    * @param other The ReadOptions to copy.
@@ -57,7 +57,7 @@ public class ReadOptions extends RocksObject {
     return this;
   }
 
-  // TODO(yhchiang): this option seems to be block-based table only.
+  // TODO (yhchiang): this option seems to be block-based table only. id:150
   //                 move this to a better place?
   /**
    * Fill the cache when loading the block-based sst formated db.
@@ -424,7 +424,7 @@ public class ReadOptions extends RocksObject {
   }
 
   // instance variables
-  // NOTE: If you add new member variables, please update the copy constructor above!
+  // NOTE: If you add new member variables, please update the copy constructor above! id:169
   //
   // Hold a reference to any iterate upper bound that was set on this object
   // until we're destroyed or it's overwritten.  That way the caller can freely

@@ -188,7 +188,7 @@ ColumnFamilyOptions BuildColumnFamilyOptions(
   cf_opts.compression = mutable_cf_options.compression;
 
   cf_opts.table_factory = options.table_factory;
-  // TODO(yhchiang): find some way to handle the following derived options
+  // TODO (yhchiang): find some way to handle the following derived options id:203
   // * max_file_size
 
   return cf_opts;
@@ -419,7 +419,7 @@ bool ParseSliceTransform(
   // pointer-typed option into its instance, here we do so for backward
   // compatibility as we allow this action in SetOption().
 
-  // TODO(yhchiang): A possible better place for these serialization /
+  // TODO (yhchiang): A possible better place for these serialization / id:226
   // deserialization is inside the class definition of pointer-typed
   // option itself, but this requires a bigger change of public API.
   bool result =
@@ -432,7 +432,7 @@ bool ParseSliceTransform(
   if (result) {
     return result;
   }
-  // TODO(yhchiang): we can further support other default
+  // TODO (yhchiang): we can further support other default id:235
   //                 SliceTransforms here.
   return false;
 }

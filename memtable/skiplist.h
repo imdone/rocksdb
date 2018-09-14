@@ -447,7 +447,7 @@ void SkipList<Key, Comparator>::Insert(const Key& key) {
       prev_[i] = prev_[0];
     }
   } else {
-    // TODO(opt): we could use a NoBarrier predecessor search as an
+    // TODO (opt): we could use a NoBarrier predecessor search as an id:202
     // optimization for architectures where memory_order_acquire needs
     // a synchronization instruction.  Doesn't matter on x86
     FindLessThan(key, prev_);

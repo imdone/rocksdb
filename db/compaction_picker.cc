@@ -340,7 +340,7 @@ Status CompactionPicker::GetCompactionInputsFromFileNumbers(
   matched_input_files.resize(vstorage->num_levels());
   int first_non_empty_level = -1;
   int last_non_empty_level = -1;
-  // TODO(yhchiang): use a lazy-initialized mapping from
+  // TODO (yhchiang): use a lazy-initialized mapping from id:26
   //                 file_number to FileMetaData in Version.
   for (int level = 0; level < vstorage->num_levels(); ++level) {
     for (auto file : vstorage->LevelFiles(level)) {
@@ -753,7 +753,7 @@ Status CompactionPicker::SanitizeCompactionInputFilesForAllLevels(
   auto& levels = cf_meta.levels;
   auto comparator = icmp_->user_comparator();
 
-  // TODO(yhchiang): add is_adjustable to CompactionOptions
+  // TODO (yhchiang): add is_adjustable to CompactionOptions id:32
 
   // the smallest and largest key of the current compaction input
   std::string smallestkey;

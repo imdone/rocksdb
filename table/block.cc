@@ -295,7 +295,7 @@ bool DataBlockIter::SeekForGetImpl(const Slice& target) {
     // If a key does not exist inside a restart interval, we avoid
     // further searching the block content accross restart interval boundary.
     //
-    // TODO(fwu): check the left and write boundary of the restart interval
+    // TODO (fwu): check the left and write boundary of the restart interval id:236
     // to avoid linear seek a target key that is out of range.
     if (!ParseNextDataKey(limit) || Compare(key_, target) >= 0) {
       // we stop at the first potential matching user key.
@@ -492,7 +492,7 @@ bool DataBlockIter::ParseNextDataKey(const char* limit) {
              value_type == ValueType::kTypeRangeDeletion);
 
       if (key_pinned_) {
-        // TODO(tec): Investigate updating the seqno in the loaded block
+        // TODO (tec): Investigate updating the seqno in the loaded block id:178
         // directly instead of doing a copy and update.
 
         // We cannot use the key address in the block directly because

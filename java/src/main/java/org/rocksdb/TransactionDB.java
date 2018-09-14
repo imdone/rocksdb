@@ -117,7 +117,7 @@ public class TransactionDB extends RocksDB
         writeOptions.nativeHandle_, transactionOptions.nativeHandle_));
   }
 
-  // TODO(AR) consider having beingTransaction(... oldTransaction) set a
+  // TODO (AR) consider having beingTransaction(... oldTransaction) set a id:230
   // reference count inside Transaction, so that we can always call
   // Transaction#close but the object is only disposed when there are as many
   // closes as beginTransaction. Makes the try-with-resources paradigm easier for

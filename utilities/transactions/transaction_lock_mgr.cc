@@ -63,7 +63,7 @@ struct LockMapStripe {
   std::shared_ptr<TransactionDBCondVar> stripe_cv;
 
   // Locked keys mapped to the info about the transactions that locked them.
-  // TODO(agiardullo): Explore performance of other data structures.
+  // TODO (agiardullo): Explore performance of other data structures. id:345
   std::unordered_map<std::string, LockInfo> keys;
 };
 

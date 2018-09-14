@@ -48,7 +48,7 @@ Reader::~Reader() {
 // in the last log file, which are presumably due to a write in progress
 // during restart (or from log recycling).
 //
-// TODO krad: Evaluate if we need to move to a more strict mode where we
+// TODO krad: Evaluate if we need to move to a more strict mode where we id:44
 // restrict the inconsistency to only the last log
 bool Reader::ReadRecord(Slice* record, std::string* scratch,
                         WALRecoveryMode wal_recovery_mode) {
@@ -363,7 +363,7 @@ unsigned int Reader::ReadPhysicalRecord(Slice* result, size_t* drop_size) {
       // Skip zero length record without reporting any drops since
       // such records are produced by the mmap based writing code in
       // env_posix.cc that preallocates file regions.
-      // NOTE: this should never happen in DB written by new RocksDB versions,
+      // NOTE: this should never happen in DB written by new RocksDB versions, id:120
       // since we turn off mmap writes to manifest and log files
       buffer_.clear();
       return kBadRecord;

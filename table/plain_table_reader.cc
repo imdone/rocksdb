@@ -595,7 +595,7 @@ Status PlainTableReader::Get(const ReadOptions& /*ro*/, const Slice& target,
       }
       prefix_match = true;
     }
-    // TODO(ljin): since we know the key comparison result here,
+    // TODO (ljin): since we know the key comparison result here, id:319
     // can we enable the fast path?
     if (internal_comparator_.Compare(found_key, parsed_target) >= 0) {
       bool dont_care __attribute__((__unused__));

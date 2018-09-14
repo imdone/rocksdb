@@ -73,7 +73,7 @@ class ObjectVal;
 
 /*
  * FbsonDocument is the main object that accesses and queries FBSON packed
- * bytes. NOTE: FbsonDocument only allows object container as the top level
+ * bytes. NOTE: FbsonDocument only allows object container as the top level id:321
  * FBSON value. However, you can use the static method "createValue" to get any
  * FbsonValue object from the packed bytes.
  *
