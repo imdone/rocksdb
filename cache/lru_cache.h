@@ -49,7 +49,8 @@ struct LRUHandle {
   LRUHandle* next_hash;
   LRUHandle* next;
   LRUHandle* prev;
-  size_t charge;  // TODO (opt): Only allow uint32_t? id:0
+  size_t charge;  // TODO (opt): Only allow uint32_t? id:0 +temp
+
   size_t key_length;
   uint32_t refs;     // a number of refs to this entry
                      // cache itself is counted as 1
