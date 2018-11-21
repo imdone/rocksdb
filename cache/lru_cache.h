@@ -50,7 +50,7 @@ struct LRUHandle {
   LRUHandle* next;
   LRUHandle* prev;
   size_t charge;  // TODO (opt): Only allow uint32_t? id:0 +temp +new
-                  // - <https://github.com/imdone/rocksdb/issues/2>
+
 
 
   size_t key_length;
