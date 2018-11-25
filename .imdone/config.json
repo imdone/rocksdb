@@ -3,7 +3,7 @@
   "sync": {
     "useImdoneioForPriority": true,
     "name": "imdone/rocksdb",
-    "id": "5b9c0779aff50b241de8a149"
+    "id": "5b9c038f898e5419a74f81c7"
   },
   "marked": {
     "langPrefix": "language-",
@@ -16,6 +16,10 @@
   "lists": [
     {
       "name": "HELP",
+      "hidden": false
+    },
+    {
+      "name": "DONE",
       "hidden": false
     },
     {
@@ -40,10 +44,6 @@
     },
     {
       "name": "FIXME",
-      "hidden": false
-    },
-    {
-      "name": "DONE",
       "hidden": false
     }
   ],
